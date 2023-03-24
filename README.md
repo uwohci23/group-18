@@ -1,2 +1,1 @@
-# group-18
-4474 HCI Design Project
+# 4474-redesign

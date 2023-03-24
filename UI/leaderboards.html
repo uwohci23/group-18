@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8" />
+        <title>4474 ARCADE</title>
+        <link rel="stylesheet" href="leaderboards.css">
+    </head>
+    <body>
+        <form action="game-select.html">
+            <button class="back-button"></button>
+        </form>
+        <div class="tabs">
+            <button class="game-select active" onclick="updateGameSelection()">Snake</button>
+            <button class="game-select tab-2" onclick="updateGameSelection()">Minesweeper</button>
+            <button class="game-select" onclick="updateGameSelection()">Tetris</button>
+        </div>
+        <div class="difficulty-selection">
+            <button class="difficulty-select active" onclick="updateDifficultySelection()">Easy</button>
+            <button class="difficulty-select" onclick="updateDifficultySelection()">Medium</button>
+            <button class="difficulty-select" onclick="updateDifficultySelection()">Hard</button>
+        </div>
+        <div class="highscores-area">
+            <div class="tabcontent">
+                <h2>Snake</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <td>Position</td>
+                            <td>Player</td>
+                            <td>Score</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+  <script src="leaderboards.js"></script>
+</html>

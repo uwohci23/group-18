@@ -1,0 +1,80 @@
+body {
+    background: rgba(46, 15, 53, 0.877);
+    background-image: url("../Media/game_select_background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 80vh;
+}
+
+.game {
+    width: 20vw;
+    height: 14vw;
+    border: 1px solid black;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 1px 5px 15px 5px #000000
+}
+
+#snake{
+    background-image: url("../Media/snake_game_preview.png");
+    background-size: cover;
+    background-position: center;
+}
+
+#minesweeper {
+    background-image: url("../Media/minesweeper_game_preview.png");
+    background-size: cover;
+    background-position: center;
+}
+
+#tetris {
+    background-image: url("../Media/tetris_game_preview.png");
+    background-size: cover;
+    background-position: center;
+}
+
+.game:hover {
+    transform: scale(1.2);
+}
+
+.games {
+    margin: auto;
+    width: 80vw;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 27vh;
+}
+
+p {
+    margin: auto; 
+    width: fit-content;
+    margin-top: 8%;
+    text-align: center;
+    top: 30vh;
+    text-align: center;
+    font-family: "Arial Black", Gadget, sans-serif;
+    font-size: 4.2vw;
+    letter-spacing: 2.2px;
+    word-spacing: 1px;
+    color: #000000;
+    font-weight: 300;
+    text-decoration: none;
+    font-style: normal;
+    font-variant: normal;
+    text-transform: none;
+    box-shadow: 2px 5px 8px 2px #000000;
+    border-radius: 16px;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    padding: 0.5%;
+    text-shadow: 1px 1px 2px #ffffffd5;
+    
+}
+
+p:hover {
+    transform: scale(1.2);
+    font-weight: 700;
+}
+
+a {
+    text-decoration: none;
+}

@@ -1,0 +1,207 @@
+body {
+    width: auto;
+    height: 100vh;
+    background-image: url("../Media/leaderboard_background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.highscores-area {
+    background-color: rgba(20, 13, 4, 0.336);
+    width: 64vw;
+    height: 56vh;
+    margin: auto;
+    margin-top: 3vh;
+    border: 3px solid black;
+    border-radius: 1em;
+    box-shadow: 1px 3px 10px 4px #000000
+}
+
+/* Style the tabs */
+.tabs {
+    width:fit-content;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+}
+
+.game-select {
+    color:rgb(223, 218, 235);
+    outline: none;
+    cursor: pointer;
+    font-size: 17px;
+    padding: 10px 20px;
+    background-color: #240591;
+    border: none;
+    font-weight: bold;
+    position: relative;
+    z-index: 1;
+}
+
+.game-select:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -11px;
+    width: 24px;
+    transform: skewX(-30deg);
+    background-color: #240591;
+    z-index: -1;
+}
+
+.game-select:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: -11px;
+    width: 24px;
+    transform: skewX(-30deg);
+    background-color: #240591;
+    z-index: -1;
+}
+  
+/* Set the active tab */
+.active {
+  background-color: #9c1ac4;
+}
+
+.active:before{
+  background-color: #9c1ac4;
+}
+
+.active:after{
+  background-color: #9c1ac4;
+}
+
+/* Change color of tabs on hover */
+.game-select:hover {
+  background-color: #6409a1;
+}
+.game-select:hover:after {
+  background-color: #6409a1;
+}
+.game-select:hover:before {
+  background-color: #6409a1;
+}
+  
+.difficulty-selection .active {
+  background-color: #9c1ac4;
+}
+.difficulty-selection .active:before{
+  background-color: #9c1ac4;
+}
+.difficulty-selection .active:after{
+  background-color: #9c1ac4;
+}
+
+/* Hide all tab content */
+.tabcontent {
+  display: block;
+}
+.tab-2 {
+  margin-left: 8.5%;
+  margin-right: 8.5%;
+}
+.back-button {
+  background-image: url("../Media/back_button.png");
+  background-size: contain;
+  background-color: transparent;
+  width: 5em;
+  height: 5em;
+  margin-top: 10px;
+  border: none;
+  border-radius: 1em;
+}
+
+.back-button:hover{
+  background-color: #411dc44b
+}
+
+h2 {
+    font-size: 200%;
+    width: fit-content;
+    margin: auto;
+    color: whitesmoke;
+}
+
+table {
+    width: 80%;
+    margin: auto;
+    border: 3px solid white;
+}
+
+td {
+    margin: 0px;
+    color: white;
+    border: 1px solid white;
+}
+
+.difficulty-selection{
+  width:fit-content;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+}
+
+.difficulty-select {
+  margin-right: 12%;
+  margin-top: 1vh;
+  color:rgb(223, 218, 235);
+  outline: none;
+  cursor: pointer;
+  font-size: 13px;
+  padding: 10px 20px;
+  background-color: #240591;
+  border: none;
+  font-weight: bold;
+  position: relative;
+  z-index: 1;
+}
+
+.difficulty-select .tab-2{
+  margin-right: 35px;
+}
+
+
+
+.difficulty-select:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -11px;
+  width: 24px;
+  transform: skewX(-30deg);
+  background-color: #240591;
+  z-index: -1;
+}
+
+.difficulty-select:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: -11px;
+  width: 24px;
+  transform: skewX(-30deg);
+  background-color: #240591;
+  z-index: -1;
+}
+
+/* Change color of tabs on hover */
+.difficulty-select:hover {
+  background-color: #6409a1;
+}
+
+.difficulty-select:hover:after {
+  background-color: #6409a1;
+}
+
+.difficulty-select:hover:before {
+  background-color: #6409a1;
+}
