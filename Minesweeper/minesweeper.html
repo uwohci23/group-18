@@ -5,14 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="minesweeper.css">
     <script src="minesweeper.js" type="module"></script>
+    <script src="timer.js" type="module"></script>
+    <script src="pause.js" type="module"></script>
     <title>Minesweeper</title>
   </head>
-
   <body>
     <h3 class="title">Minesweeper</h3>
+    <div class="timer">
+      00:00
+    </div>
     <div class="subtext">
       Mines Left: <span data-mine-count></span>
     </div>
     <div class="board"></div>
+    <button data-modal-target="#ms-modal" id="pause-button">
+      | |
+    </button>
+    <div class="pause-modal" id="ms-modal">
+      <button data-modal-close class="pause-button">Resume</button>
+      <button class="pause-button" id="restart">Restart</button>
+      <button class="pause-button" id="menu">Menu</button>
+    </div>
+    <div id="overlay"></div>
   </body>
 </html>

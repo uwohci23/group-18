@@ -1,4 +1,5 @@
 import { TILE_STATUS, createBoard, flagTile, revealTile, checkWin, checkLose } from "./game.js"
+import { stop } from "./timer.js"
 
 const BOARD_HEIGHT = 8
 const BOARD_WIDTH = 8
@@ -40,6 +41,7 @@ function checkGameEnd() {
   const lose = checkLose(board)
 
   if (win || lose) {
+    stop()
     boardElement.addEventListener('click', stopProp, { capture: true })
     boardElement.addEventListener('contextmenu', stopProp, { capture: true })
   }
