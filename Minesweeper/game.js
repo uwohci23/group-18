@@ -1,3 +1,4 @@
+import { start } from "./timer.js"
 
 export const TILE_STATUS = {
   HIDDEN: 'hidden',
@@ -52,6 +53,8 @@ export function flagTile(tile) {
 }
 
 export function revealTile(board, tile) {
+  start()
+
   if (tile.status !== TILE_STATUS.HIDDEN) {
     return
   }
