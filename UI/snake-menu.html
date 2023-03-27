@@ -31,4 +31,22 @@
       <button class="play-button">Play⏵</button>
     </form>
   </body>
+  <script>
+    localStorage.setItem('ms-difficulty', 'easy')
+    const easyButton = document.querySelector('input[value="easy"]')
+    const mediumButton = document.querySelector('input[value="medium"]')
+    const hardButton = document.querySelector('input[value="hard"]')
+
+    easyButton.addEventListener('change', () => {
+      localStorage.setItem('snake-difficulty', 'easy')
+    })
+
+    mediumButton.addEventListener('change', () => {
+      localStorage.setItem('snake-difficulty', 'medium')
+    })
+
+    hardButton.addEventListener('change', () => {
+      localStorage.setItem('snake-difficulty', 'hard')
+    })
+  </script>
 </html>

@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <title>Snake Game</title>
+        <link href="snake.css" rel="stylesheet" type="text/css">
+        <link href="../UI/pause.css" rel="stylesheet">
+        <style>
+            canvas{
+                display: block;
+                margin: 0 auto;
+            }
+        </style>
+    </head>
+    <body>
+        <canvas id="snake" width="608" height="608"></canvas>
+        <script src="snake.js" type="module"></script>
+        <button data-modal-target="#ms-modal" id="pause-button">
+            | |
+        </button>
+        <div class="pause-modal" id="ms-modal">
+            <button data-modal-close class="pause-button">Resume</button>
+            <button class="pause-button" id="restart">Restart</button>
+            <button class="pause-button" id="menu">Menu</button>
+        </div>
+        <div class="game-over-modal" id="game-over-modal">
+            <h2>Game Over</h2>
+            <p>Your Score: <span id="final-score"></span></p>
+            <label for="player-name">Name:</label>
+            <input type="text" id="player-name"/>
+            <button class="game-over-button" id="submit-button">Submit</button>
+            <button class="game-over-button" id="restart-game">Restart</button>
+            <button class="game-over-button" id="go-menu">Menu</button>
+        </div>
+        <div id="overlay"></div>
+    </body>
+    <script src="../UI/pause.js" type="module"></script>
+    <script src="../UI/endmenu.js" type="module"></script>
+
+</html>

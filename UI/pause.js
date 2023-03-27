@@ -1,4 +1,4 @@
-import { stop, start } from "./timer.js"
+import { stop, start } from "../Minesweeper/timer.js"
 
 const openModalButtons = document.querySelectorAll('[data-modal-target]');
 const closeModalButtons = document.querySelectorAll('[data-modal-close]');

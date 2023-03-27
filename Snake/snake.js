@@ -1,4 +1,34 @@
+import { openGameOverModal } from '../UI/endmenu.js';
 
+window.onload = function() {
+    startGame()
+};
+
+document.getElementById('submit-button').addEventListener('click', saveHighScore);
+
+
+const NO_OF_HIGH_SCORES = 3;
+const HIGH_SCORES = 'Snake top scores';
+
+const highScoreString = localStorage.getItem(HIGH_SCORES);
+const highScores = JSON.parse(highScoreString) ?? [];
+
+const difficulty = localStorage.getItem('snake-difficulty')
+let gameSpeed;
+switch (difficulty) {
+  case 'easy':
+    gameSpeed = 175;
+    break;
+  case 'medium':
+    gameSpeed = 110;
+    break;
+  case 'hard':
+    gameSpeed = 70;
+    break;
+  default:
+    gameSpeed = 100;
+    break;
+}
 const cvs = document.getElementById("snake");
 const ctx = cvs.getContext("2d");
 
@@ -78,7 +108,7 @@ function startGame(){
 
     // call draw function every 100 ms
 
-    game = setInterval(draw,100);
+    game = setInterval(draw, gameSpeed);
 
 }
 
@@ -130,6 +160,8 @@ function draw(){
         x : snakeX,
         y : snakeY
     }
+
+    
     
     // game over 
     
@@ -144,9 +176,13 @@ function draw(){
         ctx.fillStyle="white";
         ctx.font="30px Changa One";
         ctx.fillText("Your Score: " + score, 6*box, 10*box);
+        openGameOverModal(score);
+        checkHighScore(score);
+
     }
-    
+
     snake.unshift(newHead);
+
 
     ctx.fillStyle = "white";
     ctx.font = "45px Changa one";
@@ -156,6 +192,45 @@ function draw(){
     ctx.fillText("Highest score: " + highscore,12*box,1.6*box);
     
 }
+
+function checkHighScore(score) {
+    var highScores = JSON.parse(localStorage.getItem(HIGH_SCORES)) ?? [];
+    var highScoresForCurrentDifficulty = highScores[`${difficulty}_scores`];
+    const lowestScore = highScoresForCurrentDifficulty[NO_OF_HIGH_SCORES - 1]?.score ?? 0;
+    console.log(lowestScore)
+    if (!(score > lowestScore)){
+        document.querySelector(".game-over-modal label").style.display = "none";
+        document.querySelector(".game-over-modal input").style.display = "none";
+        document.querySelector("#submit-button").style.display = "none";
+
+    }
+  }
+
+  export function saveHighScore() {
+    const score = document.querySelector("#final-score").textContent;
+    const name = document.querySelector("#player-name").value;
+
+    var highScores = JSON.parse(localStorage.getItem(HIGH_SCORES)) ?? [];
+    var highScoresForCurrentDifficulty = highScores[`${difficulty}_scores`];
+
+
+    const newScore = { score, name };
+    
+    // 1. Add to list
+    console.log(JSON.stringify(highScoresForCurrentDifficulty))
+    highScoresForCurrentDifficulty.push(newScore);
+    console.log(JSON.stringify(highScoresForCurrentDifficulty))
+  
+    // 2. Sort the list
+    highScoresForCurrentDifficulty.sort((a, b) => b.score - a.score);
+    
+    // 3. Select new list
+    highScoresForCurrentDifficulty.splice(NO_OF_HIGH_SCORES);
+    
+    // 4. Save to local storage
+    highScores[`${difficulty}_scores`] = highScoresForCurrentDifficulty;
+    localStorage.setItem(HIGH_SCORES, JSON.stringify(highScores));
+  };
 
 function direction(event){
     let key = event.keyCode;
@@ -183,23 +258,4 @@ function collision(newhead,snake){
     }
     return false;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

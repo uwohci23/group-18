@@ -67,18 +67,6 @@ window.addEventListener("load", () => {
   updateLeaderboard("Snake", "Easy");
 });
 
-snake_top_scores = {
-  easy_scores: [
-    {name: "Michael", score: 8},
-    {name: "Jason", score: 4}],
-  medium_scores: [
-    {name: "Michael", score: 8},
-    {name: "Jerry", score: 5}],
-  hard_scores: [
-    {name: "Michael", score: 8},
-    {name: "John", score: 4}]
-}
-
 localStorage.setItem('Snake top scores', JSON.stringify(snake_top_scores));
 
 
