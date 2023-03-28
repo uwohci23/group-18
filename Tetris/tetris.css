@@ -1,0 +1,102 @@
+html, body {
+    height: 100%;
+    margin: 0;
+  }
+  
+  #rhs {
+    padding-bottom: 45vh;
+  }
+  
+  body {
+    background: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  #game-screen {
+    background: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  canvas {
+    border: 1px solid white;
+  }
+  
+  #tetrisPlayButton {
+    margin-right: 10px;
+  
+  }
+  
+  #score{
+    color: red;
+    background: white;
+    width:100px;
+    margin-left: 20px;
+    text-align: center;
+  }
+  
+  #holdingDiv{
+    color: red;
+    background: white;
+    width:100px;
+    margin-left: 20px;
+    text-align: left;
+  }
+  
+  #timer{
+    color: red;
+    background: white;
+    width:100px;
+    margin-left: 20px;
+    margin-top: 20px;
+    text-align: left;
+  }
+  
+  #next{
+    opacity: 1;
+    /* display: flex;
+    align-items:flex-start;
+    justify-content: flex-end; */
+    border: 1px solid #333333;
+  
+    
+    /* position: absolute;
+    top: 20%;
+    right: calc(0% + 10px); */
+    margin: 10px;
+    /* padding:10px; */
+    width: 120px;
+    height: 120px;
+    background-color: black;
+  }
+  
+  
+  #hold{
+    opacity: 1;
+    /* display: flex;
+    align-items:flex-start;
+    justify-content: flex-end; */
+    border: 1px solid #333333;
+  
+    
+    /* position: absolute;
+    top: 20%;
+    right: calc(0% + 10px); */
+    margin: 10px;
+    /* padding:10px; */
+    width: 120px;
+    height: 120px;
+    background-color: black;
+  }
+  
+  
+  #game{
+    opacity: 1;
+  }
+  
+  #game.show {
+    opacity: 0.05;
+  }
