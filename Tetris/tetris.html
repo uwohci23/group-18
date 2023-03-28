@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Basic Tetris HTML Game</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="tetris.css">
+  <script defer src="tetris.js"></script>
+
+</head>
+<body>
+  <div id="game-screen">
+    <div>
+      <button id="tetrisPlayButton" onclick="loop()">Play!</button>
+      <div id="holdingDiv">Holding: </div>
+      <canvas id="hold"></canvas>
+    </div>
+
+    <canvas width="320" height="640" id="game"></canvas>
+
+    <div id="rhs">
+      <canvas id="next"></canvas>
+      <div id="score"></div>
+      <div id="timer">Time: 0</div>
+    </div>
+  </div>
+
+
+</body>
+</html>
