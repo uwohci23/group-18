@@ -610,4 +610,44 @@ function getRandomInt2(min, max) {
 
     loop();
   }
+
+  /* PAUSE STUFF */
+  const openModalButtons = document.getElementById('pause-button'); //pause
+  const closeModalButtons = document.querySelectorAll('[data-modal-close]'); //resume
+  const restartButton = document.getElementById('restart'); //restart
+  const menuButton = document.getElementById('menu'); //menu
+  const overlay = document.getElementById('overlay'); //screen  
+
+  const modal = document.querySelector(openModalButtons.dataset.modalTarget);
   
+  //Open Pause Menu
+  openModalButtons.addEventListener('click', function() {const modal = document.querySelector(openModalButtons.dataset.modalTarget); openModal(modal); } );
+
+  // closeModalButtons.addEventListener('click', function() {const modal = closeModalButtons.closest('.pause-modal'); closeModal(modal);} );
+  
+  //Close Pause Menu to continue game
+  closeModalButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const modal = button.closest('.pause-modal');
+      closeModal(modal);
+    })
+  })
+
+  restartButton.addEventListener('click', function() {location.reload();})
+
+  menuButton.addEventListener('click', function() {location.href = "../UI/game-select.html";})
+  
+  function openModal(modal) {
+    if (modal == null) return;
+    pauseClicked();
+    modal.classList.add('active');
+    overlay.classList.add('active');
+    
+  }
+  
+  function closeModal(modal) {
+    if (modal == null) return;
+    resume();
+    modal.classList.remove('active');
+    overlay.classList.remove('active');
+  }

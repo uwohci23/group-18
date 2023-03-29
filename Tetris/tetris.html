@@ -1,29 +1,56 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Basic Tetris HTML Game</title>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" href="tetris.css">
-  <script defer src="tetris.js"></script>
+  <head>
+    <title>Basic Tetris HTML Game</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="tetris.css">
+    <!-- <link href="../UI/pause.css" rel="stylesheet"> -->
+    <script defer src="tetris.js"></script>
 
-</head>
-<body>
-  <div id="game-screen">
-    <div>
-      <button id="tetrisPlayButton" onclick="loop()">Play!</button>
-      <div id="holdingDiv">Holding: </div>
-      <canvas id="hold"></canvas>
+  </head>
+  <body>
+     Pause Button Stuff
+    <button data-modal-target="#ms-modal" id="pause-button">
+      | |
+    </button>
+    <div class="pause-modal" id="ms-modal">
+        <button data-modal-close class="pause-button">Resume</button>
+        <button class="pause-button" id="restart">Restart</button>
+        <button class="pause-button" id="menu">Menu</button>
     </div>
 
-    <canvas width="320" height="640" id="game"></canvas>
+    <!--Game Over Stuff
+    <div class="game-over-modal" id="game-over-modal">
+      <h2>Game Over</h2>
+      <p>Your Score: <span id="final-score"></span></p>
+      <label for="player-name">Name:</label>
+      <input type="text" id="player-name"/>
+      <button class="game-over-button" id="submit-button">Submit</button>
+      <button class="game-over-button" id="restart-game">Restart</button>
+      <button class="game-over-button" id="go-menu">Menu</button>
+    </div> -->
 
-    <div id="rhs">
-      <canvas id="next"></canvas>
-      <div id="score"></div>
-      <div id="timer">Time: 0</div>
+
+    <div id="game-screen">
+      <div>
+        <button id="tetrisPlayButton" onclick="loop()">Play!</button>
+        <div id="holdingDiv">Holding: </div>
+        <canvas id="hold"></canvas>
+      </div>
+
+      <canvas width="320" height="640" id="game"></canvas>
+
+      <div id="rhs">
+        <canvas id="next"></canvas>
+        <div id="score"></div>
+        <div id="timer">Time: 0</div>
+      </div>
     </div>
-  </div>
+    <div id="overlay"></div>
 
 
-</body>
+  </body>
+
+  <!-- <script src="../UI/pause.js" type="module"></script>
+  <script src="../UI/endmenu.js" type="module"></script> -->
 </html>
