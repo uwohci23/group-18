@@ -594,7 +594,8 @@ function getRandomInt2(min, max) {
     paused=true;
     document.removeEventListener('keydown', handleKeyDown);
 
-    game.classList.add('show');
+    game.classList.add('hide');
+    gameScreen.classList.add('hide');
 
 
     document.getElementById("tetrisPlayButton").innerHTML = "Play!";
@@ -606,12 +607,14 @@ function getRandomInt2(min, max) {
     paused=false;
     document.addEventListener('keydown', handleKeyDown);
 
-    game.classList.remove('show');
+    game.classList.remove('hide');
+    gameScreen.classList.remove('hide');
 
     loop();
   }
 
   /* PAUSE STUFF */
+  //Add Confirmation after Choosing to Restart or Go to Menu
   const openModalButtons = document.getElementById('pause-button'); //pause
   const closeModalButtons = document.querySelectorAll('[data-modal-close]'); //resume
   const restartButton = document.getElementById('restart'); //restart
@@ -651,3 +654,11 @@ function getRandomInt2(min, max) {
     modal.classList.remove('active');
     overlay.classList.remove('active');
   }
+
+
+  /* END OF GAME */
+
+
+
+
+  /* HIGH SCORE */
