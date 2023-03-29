@@ -377,7 +377,7 @@ function getRandomInt2(min, max) {
   
     context.fillStyle = 'black';
     context.globalAlpha = 0.75;
-    context.fillRect(0, canvas.height / 2 - 85, canvas.width, 160);
+    context.fillRect(10, canvas.height / 2 - 85, canvas.width-20, 160);
   
     context.globalAlpha = 1;
     context.fillStyle = 'white';
