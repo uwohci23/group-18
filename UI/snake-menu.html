@@ -12,7 +12,7 @@
       </form>
       <h3 class="title">Snake</h3>
     </div>
-    <button class="game-info-button">Instructions</button>
+    <button class="game-info-button" id="instructions-open">Instructions</button>
     <div class="difficulty-radio-buttons">
       <label>
         <input type="radio" name="difficulty" value="easy" checked>
@@ -30,6 +30,16 @@
     <form class="play-form" action="../Snake/snake.html">
       <button class="play-button">Play⏵</button>
     </form>
+    <div class="instructions-modal" id="instructions-modal">
+      <button class="instructions-close" id="instructions-close">X</button>
+      <div class="instructions-text">
+        The player controls a long, thin creature, resembling a snake, which roams around on a bordered plane, 
+        picking up food (or some other item), trying to avoid hitting its own tail or the edges of the playing 
+        area. Each time the snake eats a piece of food, its tail grows longer, making the game increasingly difficult.
+      </div>
+    </div>
+    <div id="overlay"></div>
+    <script src="instructions.js" type="module"></script>
   </body>
   <script>
     localStorage.setItem('snake-difficulty', 'easy')
