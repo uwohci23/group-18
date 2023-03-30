@@ -4,9 +4,7 @@
 // @see https://stackoverflow.com/a/1527820/2124254
 
 /*Notes
-- Store a block
-- Preview of next block
-- Adjust randomnedd so you still see all 7 blocks within some larger sequence
+
 */
 paused = true;
 score = 0;
@@ -387,6 +385,10 @@ function getRandomInt2(min, max) {
     context.fillText("Your Score:", canvas.width / 2, canvas.height / 2);
     context.font = '32px monospace bold';
     context.fillText((" " + score + " "), canvas.width / 2, canvas.height / 2 + 45);
+    gameScreen.classList.add('hide');
+    document.removeEventListener('keydown', pDown);
+    pauseClicked()
+    openGameOverModal()
   }
   
   const canvas = document.getElementById('game');
@@ -598,6 +600,7 @@ function getRandomInt2(min, max) {
 
     game.classList.add('hide');
     gameScreen.classList.add('hide');
+    body.classList.add('hide');
 
 
     document.getElementById("tetrisPlayButton").innerHTML = "Play!";
@@ -611,6 +614,7 @@ function getRandomInt2(min, max) {
 
     game.classList.remove('hide');
     gameScreen.classList.remove('hide');
+    body.classList.remove('hide');
 
     loop();
   }
@@ -659,8 +663,3 @@ function getRandomInt2(min, max) {
 
 
   /* END OF GAME */
-
-
-
-
-  /* HIGH SCORE */

@@ -47,7 +47,7 @@ function updateLeaderboard(game, difficulty){
     const new_row = document.createElement("tr");
     
     const position_cell = document.createElement("td");
-    position_cell.textContent = i;
+    position_cell.textContent = i+1;
     const name_cell = document.createElement("td");
     name_cell.textContent = element.name;
     const score_cell = document.createElement("td");
