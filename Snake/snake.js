@@ -73,42 +73,45 @@ ground.onload = function(){
     ctx.fillText("Highest score: " + highscore,12*box,1.6*box);
 }
 
+//Control pausing 
+let paused = false;
+
+
+//TogglePause function
+export function togglePause() {
+    paused = !paused;
+    if (paused) {
+        clearInterval(game);
+    }else {
+        game = setInterval(draw, gameSpeed);
+    }
+}
+
 //control the snake
 document.addEventListener("keydown",direction);
 let d;
 
 
+
 // restart the game
 function startGame(){
-
-
     clearInterval(game);
-    
     highscore = Math.max(score, highscore);
     score = 0; 
-
     // create the snake
-
     snake = [];
-
     snake[0] = {
         x : 9 * box,
         y : 10 * box
     };
-
     // create the food
-
     food = {
         x : Math.floor(Math.random()*17+1) * box,
         y : Math.floor(Math.random()*15+3) * box
     }
-
     d = "";
-
     // call draw function every 100 ms
-
     game = setInterval(draw, gameSpeed);
-
 }
 
 // draw everything to the canvas 
