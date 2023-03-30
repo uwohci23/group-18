@@ -626,9 +626,10 @@ function getRandomInt2(min, max) {
   const overlay = document.getElementById('overlay'); //screen  
 
   const modal = document.querySelector(openModalButtons.dataset.modalTarget);
+  //console.log(modal)
   
   //Open Pause Menu
-  openModalButtons.addEventListener('click', function() {const modal = document.querySelector(openModalButtons.dataset.modalTarget); openModal(modal); } );
+  openModalButtons.addEventListener('click', function() {openModal(modal); } );
 
   // closeModalButtons.addEventListener('click', function() {const modal = closeModalButtons.closest('.pause-modal'); closeModal(modal);} );
   
@@ -645,6 +646,7 @@ function getRandomInt2(min, max) {
   menuButton.addEventListener('click', function() {location.href = "../UI/game-select.html";})
   
   function openModal(modal) {
+    console.log(modal)
     if (modal == null) return;
     pauseClicked();
     modal.classList.add('active');
@@ -661,8 +663,109 @@ function getRandomInt2(min, max) {
 
 
   /* END OF GAME */
+  const gameOverModal = document.getElementById('game-over-modal');
+  const restartGameButton = document.getElementById('restart-game');
+  const goMenuButton = document.getElementById('go-menu');
+  const playerNameInput = document.getElementById('player-name');
+  const finalScoreSpan = document.getElementById('final-score');
+  const submitScore = document.getElementById('submit-button')
+  
+  //openGameOverModal()
+
+  //Submit Score event
+  //submitScore.addEventListener('click', saveHighScore);
+
+  // Restart event
+  restartGameButton.addEventListener('click', function() {location.reload();});
+
+  // Menu event
+  goMenuButton.addEventListener('click', function() {location.href = "../UI/game-select.html";});
+
+  function openGameOverModal() {
+    //console.log(score);
+    finalScoreSpan.textContent = score;
+    gameOverModal.classList.add('active');
+    overlay.classList.add('active');
+  }
+
+  function closeGameOverModal() {
+    gameOverModal.classList.remove('active');
+    overlay.classList.remove('active');
+  }
 
 
 
 
   /* HIGH SCORE */
+  // const NO_OF_HIGH_SCORES = 10;
+  // const HIGH_SCORES = 'Tetris top scores';
+
+  // const highScoreString = localStorage.getItem(HIGH_SCORES);
+  // const highScores = JSON.parse(highScoreString) ?? [];
+
+  // const difficulty = localStorage.getItem('tetris-difficulty')
+
+  // function checkHighScore() {
+  //   var highScoresForCurrentDifficulty = highScores[`${difficulty}_scores`];
+
+  //   /*This code checks whether the NO_OF_HIGH_SCORES-th element in highScoresForCurrentDifficulty exists 
+  //   and has a score property. If it does, lowestScore is set to the score property of that element. 
+  //   Otherwise, lowestScore is set to 0 */
+  //   const lowestScore = highScoresForCurrentDifficulty[NO_OF_HIGH_SCORES - 1]?.score ?? 0;
+
+  //   console.log(lowestScore)
+  //   // if (!(score > lowestScore)){
+  //   //     document.querySelector(".game-over-modal label").style.display = "none";
+  //   //     document.querySelector(".game-over-modal input").style.display = "none";
+  //   //     document.querySelector("#submit-button").style.display = "none";
+  //   // }
+  // }
+
+  // function saveHighScore() {
+  //   const name = document.querySelector("#player-name").value;
+
+  //   var highScoresForCurrentDifficulty = highScores[`${difficulty}_scores`];
+
+
+  //   const newScore = { score, name };
+    
+  //   // 1. Add to list
+  //   console.log(JSON.stringify(highScoresForCurrentDifficulty))
+  //   highScoresForCurrentDifficulty.push(newScore);
+  //   console.log(JSON.stringify(highScoresForCurrentDifficulty))
+  
+  //   // 2. Sort the list
+  //   highScoresForCurrentDifficulty.sort((a, b) => b.score - a.score);
+    
+  //   // 3. Select new list
+  //   highScoresForCurrentDifficulty.splice(NO_OF_HIGH_SCORES);
+    
+  //   // 4. Save to local storage
+  //   highScores[`${difficulty}_scores`] = highScoresForCurrentDifficulty;
+  //   localStorage.setItem(HIGH_SCORES, JSON.stringify(highScores));
+  // }
+
+  function saveHighScore()
+  {
+    const name = document.querySelector("#player-name").value;
+
+    var highScoresMedium = highScores["medium_scores"];
+
+    const newScore = { score, name };
+
+    // 1. Add to list
+    console.log(JSON.stringify(highScoresMedium))
+    highScoresMedium.push(newScore);
+    console.log(JSON.stringify(highScoresMedium))
+  
+    // 2. Sort the list
+    highScoresMedium.sort((a, b) => b.score - a.score);
+    
+    // 3. Select new list
+    highScoresMedium.splice(NO_OF_HIGH_SCORES);
+    
+    // 4. Save to local storage
+    highScores["medium_scores"] = highScoresMedium;
+    localStorage.setItem(HIGH_SCORES, JSON.stringify(highScores));
+
+  }
