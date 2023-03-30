@@ -4,9 +4,7 @@
 // @see https://stackoverflow.com/a/1527820/2124254
 
 /*Notes
-- Store a block
-- Preview of next block
-- Adjust randomnedd so you still see all 7 blocks within some larger sequence
+
 */
 paused = true;
 score = 0;
@@ -387,6 +385,10 @@ function getRandomInt2(min, max) {
     context.fillText("Your Score:", canvas.width / 2, canvas.height / 2);
     context.font = '32px monospace bold';
     context.fillText((" " + score + " "), canvas.width / 2, canvas.height / 2 + 45);
+    gameScreen.classList.add('hide');
+    document.removeEventListener('keydown', pDown);
+    pauseClicked()
+    openGameOverModal()
   }
   
   const canvas = document.getElementById('game');
@@ -598,6 +600,7 @@ function getRandomInt2(min, max) {
 
     game.classList.add('hide');
     gameScreen.classList.add('hide');
+    body.classList.add('hide');
 
 
     document.getElementById("tetrisPlayButton").innerHTML = "Play!";
@@ -611,6 +614,7 @@ function getRandomInt2(min, max) {
 
     game.classList.remove('hide');
     gameScreen.classList.remove('hide');
+    body.classList.remove('hide');
 
     loop();
   }
@@ -644,7 +648,6 @@ function getRandomInt2(min, max) {
   menuButton.addEventListener('click', function() {location.href = "../UI/game-select.html";})
   
   function openModal(modal) {
-    console.log(modal)
     if (modal == null) return;
     pauseClicked();
     modal.classList.add('active');
@@ -671,7 +674,7 @@ function getRandomInt2(min, max) {
   //openGameOverModal()
 
   //Submit Score event
-  //submitScore.addEventListener('click', saveHighScore);
+  submitScore.addEventListener('click', saveHighScore);
 
   // Restart event
   restartGameButton.addEventListener('click', function() {location.reload();});
@@ -681,7 +684,19 @@ function getRandomInt2(min, max) {
 
   function openGameOverModal() {
     //console.log(score);
+    if(isHighScore())
+    {
+      restartGameButton.disabled = true;
+      goMenuButton.disabled = true;
+    }
+    if(isLowScore())
+    {
+      submitScore.disabled = true;
+    }
     finalScoreSpan.textContent = score;
+    document.addEventListener('keydown', function(event) {
+      console.log(event.keyCode);
+    });
     gameOverModal.classList.add('active');
     overlay.classList.add('active');
   }
@@ -695,53 +710,16 @@ function getRandomInt2(min, max) {
 
 
   /* HIGH SCORE */
-  // const NO_OF_HIGH_SCORES = 10;
-  // const HIGH_SCORES = 'Tetris top scores';
 
-  // const highScoreString = localStorage.getItem(HIGH_SCORES);
-  // const highScores = JSON.parse(highScoreString) ?? [];
+  const NO_OF_HIGH_SCORES = 10;
+  const HIGH_SCORES = 'Tetris top scores';
 
-  // const difficulty = localStorage.getItem('tetris-difficulty')
-
-  // function checkHighScore() {
-  //   var highScoresForCurrentDifficulty = highScores[`${difficulty}_scores`];
-
-  //   /*This code checks whether the NO_OF_HIGH_SCORES-th element in highScoresForCurrentDifficulty exists 
-  //   and has a score property. If it does, lowestScore is set to the score property of that element. 
-  //   Otherwise, lowestScore is set to 0 */
-  //   const lowestScore = highScoresForCurrentDifficulty[NO_OF_HIGH_SCORES - 1]?.score ?? 0;
-
-  //   console.log(lowestScore)
-  //   // if (!(score > lowestScore)){
-  //   //     document.querySelector(".game-over-modal label").style.display = "none";
-  //   //     document.querySelector(".game-over-modal input").style.display = "none";
-  //   //     document.querySelector("#submit-button").style.display = "none";
-  //   // }
-  // }
-
-  // function saveHighScore() {
-  //   const name = document.querySelector("#player-name").value;
-
-  //   var highScoresForCurrentDifficulty = highScores[`${difficulty}_scores`];
-
-
-  //   const newScore = { score, name };
-    
-  //   // 1. Add to list
-  //   console.log(JSON.stringify(highScoresForCurrentDifficulty))
-  //   highScoresForCurrentDifficulty.push(newScore);
-  //   console.log(JSON.stringify(highScoresForCurrentDifficulty))
-  
-  //   // 2. Sort the list
-  //   highScoresForCurrentDifficulty.sort((a, b) => b.score - a.score);
-    
-  //   // 3. Select new list
-  //   highScoresForCurrentDifficulty.splice(NO_OF_HIGH_SCORES);
-    
-  //   // 4. Save to local storage
-  //   highScores[`${difficulty}_scores`] = highScoresForCurrentDifficulty;
-  //   localStorage.setItem(HIGH_SCORES, JSON.stringify(highScores));
-  // }
+  const highScoreString = localStorage.getItem(HIGH_SCORES);
+  const highScores = JSON.parse(highScoreString) ?? {
+            easy_scores: [],
+            medium_scores: [],
+            hard_scores: []
+        };
 
   function saveHighScore()
   {
@@ -766,4 +744,35 @@ function getRandomInt2(min, max) {
     highScores["medium_scores"] = highScoresMedium;
     localStorage.setItem(HIGH_SCORES, JSON.stringify(highScores));
 
+    submitScore.disabled = true;
+    restartGameButton.disabled = false;
+    goMenuButton.disabled = false;
+
+  }
+
+
+   function isHighScore() 
+   {
+    var highScoresMedium = highScores["medium_scores"];
+    const highestScore = highScoresMedium[0]?.score ?? 0;
+    console.log("score " + score)
+    console.log("highestScore " + highestScore)
+    if (!(score > highestScore)){
+        return false;
+    }
+
+    return true;
+  }
+
+  function isLowScore() 
+   {
+    var highScoresMedium = highScores["medium_scores"];
+    const lowestScore = highScoresMedium[NO_OF_HIGH_SCORES-1]?.score ?? 0;
+    console.log("score " + score)
+    console.log("lowest " + lowestScore)
+    if (score < lowestScore){
+        return true;
+    }
+
+    return false;
   }

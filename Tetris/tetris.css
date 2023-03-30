@@ -8,6 +8,13 @@ html, body {
   }
   
   body {
+    background: rgb(80, 80, 80);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #body.hide {
     background: black;
     display: flex;
     align-items: center;
@@ -15,7 +22,7 @@ html, body {
   }
   
   #gameScreen {
-    background: black;
+    background: rgb(80, 80, 80);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -28,8 +35,10 @@ html, body {
     align-items: center;
     justify-content: center;
   }
+
   
   canvas {
+    background: black;
     border: 1px solid white;
   }
   
@@ -102,6 +111,7 @@ html, body {
   
   
   #game{
+    background: black;
     opacity: 1;
   }
   
