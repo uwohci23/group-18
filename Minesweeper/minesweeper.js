@@ -1,5 +1,15 @@
 import { TILE_STATUS, createBoard, flagTile, revealTile, checkWin, checkLose } from "./game.js"
-import { stop } from "./timer.js"
+import { stop, getTime, formatTime} from "./timer.js"
+import { openGameOverModal } from '../UI/endmenu.js';
+import { saveHighScore, isFastScore} from "../UI/highscores.js";
+
+//Event listener for submitting high score
+document.getElementById('submit-button').addEventListener('click', () => {
+  const score = document.querySelector("#final-score").textContent;
+  const name = document.querySelector("#player-name").value;
+  saveHighScore("Minesweeper", difficulty, getTime(), name);
+  document.querySelector("#submit-button").style.display = "none";
+});
 
 // Retrieving difficulty and adjusting board parameters
 const difficulty = localStorage.getItem('ms-difficulty')
@@ -39,7 +49,7 @@ board.forEach(row => (
       revealTile(board, tile)
       checkGameEnd()
     })
-    tile.element.addEventListener('contextmenu', e=> {
+    tile.element.addEventListener('contextmenu', e => {
       e.preventDefault()
       flagTile(tile)
       listMinesLeft()
@@ -66,6 +76,9 @@ function checkGameEnd() {
     messageText.textContent = "You Win!"
   }
   else if (lose) {
+    document.querySelector(".game-over-modal label").style.display = "none";
+    document.querySelector(".game-over-modal input").style.display = "none";
+    document.querySelector("#submit-button").style.display = "none";
     messageText.textContent = "You Lose"
     board.forEach(row => {
       row.forEach(tile => {
@@ -79,6 +92,14 @@ function checkGameEnd() {
     boardElement.addEventListener('click', stopProp, { capture: true })
     boardElement.addEventListener('contextmenu', stopProp, { capture: true })
     stop()
+    //If not a high score hide high score form
+    console.log(isFastScore(getTime(), "Minesweeper", difficulty));
+    if(!isFastScore(getTime(), "Minesweeper", difficulty)){
+      document.querySelector(".game-over-modal label").style.display = "none";
+      document.querySelector(".game-over-modal input").style.display = "none";
+      document.querySelector("#submit-button").style.display = "none";
+    }
+    openGameOverModal(formatTime(getTime()));
   }
 }
 

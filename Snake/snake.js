@@ -1,17 +1,16 @@
-import { openGameOverModal } from '../UI/endmenu.js';
+import { openGameOverModal } from '../UI/endmenu.js';saveHighScore
+import { saveHighScore, isHighScore} from "../UI/highscores.js";
 
 window.onload = function() {
     startGame()
 };
 
-document.getElementById('submit-button').addEventListener('click', saveHighScore);
-
-
-const NO_OF_HIGH_SCORES = 3;
-const HIGH_SCORES = 'Snake top scores';
-
-const highScoreString = localStorage.getItem(HIGH_SCORES);
-const highScores = JSON.parse(highScoreString) ?? [];
+document.getElementById('submit-button').addEventListener('click', () => {
+    const score = document.querySelector("#final-score").textContent;
+    const name = document.querySelector("#player-name").value;
+    saveHighScore("Snake", difficulty, score, name);
+    document.querySelector("#submit-button").style.display = "none";
+});
 
 const difficulty = localStorage.getItem('snake-difficulty')
 let gameSpeed;
@@ -161,8 +160,6 @@ function draw(){
         y : snakeY
     }
 
-    
-    
     // game over 
     
     if(snakeX < box || snakeX > 17 * box || snakeY < 3*box || snakeY > 17*box || collision(newHead,snake)){
@@ -177,8 +174,11 @@ function draw(){
         ctx.font="30px Changa One";
         ctx.fillText("Your Score: " + score, 6*box, 10*box);
         openGameOverModal(score);
-        checkHighScore(score);
-
+        if(!isHighScore(score, "Snake", difficulty)){
+            document.querySelector(".game-over-modal label").style.display = "none";
+            document.querySelector(".game-over-modal input").style.display = "none";
+            document.querySelector("#submit-button").style.display = "none";
+        }
     }
 
     snake.unshift(newHead);
@@ -192,45 +192,6 @@ function draw(){
     ctx.fillText("Highest score: " + highscore,12*box,1.6*box);
     
 }
-
-function checkHighScore(score) {
-    var highScores = JSON.parse(localStorage.getItem(HIGH_SCORES)) ?? [];
-    var highScoresForCurrentDifficulty = highScores[`${difficulty}_scores`];
-    const lowestScore = highScoresForCurrentDifficulty[NO_OF_HIGH_SCORES - 1]?.score ?? 0;
-    console.log(lowestScore)
-    if (!(score > lowestScore)){
-        document.querySelector(".game-over-modal label").style.display = "none";
-        document.querySelector(".game-over-modal input").style.display = "none";
-        document.querySelector("#submit-button").style.display = "none";
-
-    }
-  }
-
-  export function saveHighScore() {
-    const score = document.querySelector("#final-score").textContent;
-    const name = document.querySelector("#player-name").value;
-
-    var highScores = JSON.parse(localStorage.getItem(HIGH_SCORES)) ?? [];
-    var highScoresForCurrentDifficulty = highScores[`${difficulty}_scores`];
-
-
-    const newScore = { score, name };
-    
-    // 1. Add to list
-    console.log(JSON.stringify(highScoresForCurrentDifficulty))
-    highScoresForCurrentDifficulty.push(newScore);
-    console.log(JSON.stringify(highScoresForCurrentDifficulty))
-  
-    // 2. Sort the list
-    highScoresForCurrentDifficulty.sort((a, b) => b.score - a.score);
-    
-    // 3. Select new list
-    highScoresForCurrentDifficulty.splice(NO_OF_HIGH_SCORES);
-    
-    // 4. Save to local storage
-    highScores[`${difficulty}_scores`] = highScoresForCurrentDifficulty;
-    localStorage.setItem(HIGH_SCORES, JSON.stringify(highScores));
-  };
 
 function direction(event){
     let key = event.keyCode;
