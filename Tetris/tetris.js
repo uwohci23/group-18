@@ -16,6 +16,25 @@ switched = false;
 clear2 = true;
 let start = 0;
 
+const validColors = [
+  'AliceBlue', 'AntiqueWhite', 'Aqua', 'Aquamarine', 'Azure', 'Beige', 'Bisque', 'Black', 'BlanchedAlmond', 'Blue',
+  'BlueViolet', 'Brown', 'BurlyWood', 'CadetBlue', 'Chartreuse', 'Chocolate', 'Coral', 'CornflowerBlue', 'Cornsilk',
+  'Crimson', 'Cyan', 'DarkBlue', 'DarkCyan', 'DarkGoldenRod', 'DarkGray', 'DarkGrey', 'DarkGreen', 'DarkKhaki',
+  'DarkMagenta', 'DarkOliveGreen', 'DarkOrange', 'DarkOrchid', 'DarkRed', 'DarkSalmon', 'DarkSeaGreen', 'DarkSlateBlue',
+  'DarkSlateGray', 'DarkSlateGrey', 'DarkTurquoise', 'DarkViolet', 'DeepPink', 'DeepSkyBlue', 'DimGray', 'DimGrey',
+  'DodgerBlue', 'FireBrick', 'FloralWhite', 'ForestGreen', 'Fuchsia', 'Gainsboro', 'GhostWhite', 'Gold', 'GoldenRod',
+  'Gray', 'Grey', 'Green', 'GreenYellow', 'HoneyDew', 'HotPink', 'IndianRed', 'Indigo', 'Ivory', 'Khaki', 'Lavender',
+  'LavenderBlush', 'LawnGreen', 'LemonChiffon', 'LightBlue', 'LightCoral', 'LightCyan', 'LightGoldenRodYellow',
+  'LightGray', 'LightGrey', 'LightGreen', 'LightPink', 'LightSalmon', 'LightSeaGreen', 'LightSkyBlue', 'LightSlateGray',
+  'LightSlateGrey', 'LightSteelBlue', 'LightYellow', 'Lime', 'LimeGreen', 'Linen', 'Magenta', 'Maroon', 'MediumAquaMarine',
+  'MediumBlue', 'MediumOrchid', 'MediumPurple', 'MediumSeaGreen', 'MediumSlateBlue', 'MediumSpringGreen', 'MediumTurquoise',
+  'MediumVioletRed', 'MidnightBlue', 'MintCream', 'MistyRose', 'Moccasin', 'NavajoWhite', 'Navy', 'OldLace', 'Olive',
+  'OliveDrab', 'Orange', 'OrangeRed', 'Orchid', 'PaleGoldenRod', 'PaleGreen', 'PaleTurquoise', 'PaleVioletRed', 'PapayaWhip',
+  'PeachPuff', 'Peru', 'Pink', 'Plum', 'PowderBlue', 'Purple', 'Red', 'RosyBrown', 'RoyalBlue', 'SaddleBrown', 'Salmon',
+  'SandyBrown', 'SeaGreen', 'SeaShell', 'Sienna', 'Silver', 'SkyBlue', 'SlateBlue', 'SlateGray', 'SlateGrey', 'Snow', 'SpringGreen',
+  'SteelBlue', 'Tan', 'Teal', 'Thistle', 'Tomato', 'Turquoise', 'Violet', 'Wheat', 'White', 'WhiteSmoke', 'Yellow', 'YellowGreen'
+];
+
 updateScore(score);
 
 function getRandomInt2(min, max) {
@@ -463,6 +482,46 @@ function getRandomInt2(min, max) {
     'J': 'blue',
     'L': 'orange'
   };
+
+  // function changeColor(blockType, newColor) 
+  // {
+  //   // Check if color is valid
+  //   if (colors[blockType]) {
+  //     // Update color
+  //     colors[blockType] = newColor;
+  //     console.log(`Color ${blockType} has been updated to ${newColor}`);
+  //   } 
+  //   else 
+  //   {
+  //     console.log(`Invalid block ${blockType}`);
+  //   }
+  // }
+
+  function changeColor(blockType, newColor) 
+  {
+    const blockColor = colors[blockType];
+  
+    if (validColors.includes(newColor)) 
+    {
+      colors[blockType] = newColor;
+    } 
+    else if (/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/.test(newColor)) 
+    {
+      colors[blockType] = newColor;
+    } 
+    else if (/^(rgb|rgba)\([ ]*\d{1,3}[ ]*,[ ]*\d{1,3}[ ]*,[ ]*\d{1,3}[ ]*(,[ ]*\d{1,3}[ ]*)?\)$/.test(newColor)) 
+    {
+      colors[blockType] = newColor;
+    } 
+    else 
+    {
+      console.error(`Invalid color: ${newColor}`);
+      return;
+    }
+  
+    console.log(`Changed color of ${blockType} block from ${blockColor} to ${colors[blockType]}`);
+  }
+  //changeColor("O", "Brown");
   
   let count = 0;
   let tetromino = getNextTetromino();
@@ -775,3 +834,4 @@ function getRandomInt2(min, max) {
 
     return false;
   }
+
