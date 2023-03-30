@@ -1,11 +1,12 @@
 body{
-    background: #e2e2e2;
+    background: #489145;
 }
 canvas {
     display: block;
     margin: auto;
+    box-shadow: 5px 7px 15px 5px rgba(0,0,0,0.75)
 }
 
 button:hover{
-    background: #28ad4a;
+    background: #4f7259;
 }
