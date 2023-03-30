@@ -51,7 +51,7 @@ canvas {
   color: red;
   background: white;
   width:100px;
-  margin-left: 20px;
+  margin-left: 35px;
   text-align: center;
 }
 
@@ -78,12 +78,13 @@ canvas {
   align-items:flex-start;
   justify-content: flex-end; */
   border: 1px solid #333333;
+  box-shadow: 5px 7px 15px 5px rgba(0,0,0,0.75);
 
   
   /* position: absolute;
   top: 20%;
   right: calc(0% + 10px); */
-  margin: 10px;
+  margin: 25px;
   /* padding:10px; */
   width: 120px;
   height: 120px;
@@ -97,12 +98,13 @@ canvas {
   align-items:flex-start;
   justify-content: flex-end; */
   border: 1px solid #333333;
+  box-shadow: 5px 7px 15px 5px rgba(0,0,0,0.75);
 
   
   /* position: absolute;
   top: 20%;
   right: calc(0% + 10px); */
-  margin: 10px;
+  margin: 25px;
   /* padding:10px; */
   width: 120px;
   height: 120px;
@@ -113,6 +115,7 @@ canvas {
 #game{
   background: black;
   opacity: 1;
+  box-shadow: 5px 7px 15px 5px rgba(0,0,0,0.75);
 }
 
 #game.hide {
