@@ -1,10 +1,11 @@
 import { stop, start } from "../Minesweeper/timer.js"
 
-const openModalButtons = document.querySelectorAll('[data-modal-target]');
-const closeModalButtons = document.querySelectorAll('[data-modal-close]');
-const restartButton = document.getElementById('restart');
-const menuButton = document.getElementById('menu');
-const overlay = document.getElementById('overlay');
+const openModalButtons = document.querySelectorAll('[data-modal-target]'); //pause
+const closeModalButtons = document.querySelectorAll('[data-modal-close]'); //resume
+const restartButton = document.getElementById('restart'); //restart
+const menuButton = document.getElementById('menu'); //menu
+const overlay = document.getElementById('overlay'); //screen  
+console.log(openModalButtons)
 
 // Open pause events
 openModalButtons.forEach(button => {

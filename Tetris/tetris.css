@@ -14,7 +14,15 @@ html, body {
     justify-content: center;
   }
   
-  #game-screen {
+  #gameScreen {
+    background: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #gameScreen.hide {
+    opacity: 0.05;
     background: black;
     display: flex;
     align-items: center;
@@ -97,6 +105,67 @@ html, body {
     opacity: 1;
   }
   
-  #game.show {
+  #game.hide {
     opacity: 0.05;
   }
+
+  /* For Pause Menu Styling */
+  #pause-button {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+}
+  
+.pause-modal  {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 200ms ease-in-out;
+    border: 1px solid black;
+    border-radius: 10px;
+    z-index: 10;
+    background-color: white;
+    width: 600px;
+    height: 500px;
+    max-width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+  
+.pause-modal.active {
+    transform: translate(-50%, -50%) scale(1);
+}
+  
+.pause-modal .pause-button {
+  width: 80%;
+  height: 20%;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  background-color: #999;
+  color: white;
+  font-size: 32px;
+}
+
+.pause-modal .pause-button:hover {
+  background-color: #666;
+}
+
+#overlay {
+  position: fixed;
+  opacity: 0;
+  transition: 200ms ease-in-out;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+}
+
+#overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}

@@ -375,14 +375,18 @@ function getRandomInt2(min, max) {
   
     context.fillStyle = 'black';
     context.globalAlpha = 0.75;
-    context.fillRect(0, canvas.height / 2 - 30, canvas.width, 60);
+    context.fillRect(10, canvas.height / 2 - 85, canvas.width-20, 160);
   
     context.globalAlpha = 1;
     context.fillStyle = 'white';
     context.font = '36px monospace';
     context.textAlign = 'center';
     context.textBaseline = 'middle';
-    context.fillText('GAME OVER!', canvas.width / 2, canvas.height / 2);
+    context.fillText("GAME OVER!", canvas.width / 2, canvas.height / 2 - 60);
+    context.font = '32px monospace';
+    context.fillText("Your Score:", canvas.width / 2, canvas.height / 2);
+    context.font = '32px monospace bold';
+    context.fillText((" " + score + " "), canvas.width / 2, canvas.height / 2 + 45);
   }
   
   const canvas = document.getElementById('game');
@@ -592,7 +596,8 @@ function getRandomInt2(min, max) {
     paused=true;
     document.removeEventListener('keydown', handleKeyDown);
 
-    game.classList.add('show');
+    game.classList.add('hide');
+    gameScreen.classList.add('hide');
 
 
     document.getElementById("tetrisPlayButton").innerHTML = "Play!";
@@ -604,8 +609,58 @@ function getRandomInt2(min, max) {
     paused=false;
     document.addEventListener('keydown', handleKeyDown);
 
-    game.classList.remove('show');
+    game.classList.remove('hide');
+    gameScreen.classList.remove('hide');
 
     loop();
   }
+
+  /* PAUSE STUFF */
+  //Add Confirmation after Choosing to Restart or Go to Menu
+  const openModalButtons = document.getElementById('pause-button'); //pause
+  const closeModalButtons = document.querySelectorAll('[data-modal-close]'); //resume
+  const restartButton = document.getElementById('restart'); //restart
+  const menuButton = document.getElementById('menu'); //menu
+  const overlay = document.getElementById('overlay'); //screen  
+
+  const modal = document.querySelector(openModalButtons.dataset.modalTarget);
   
+  //Open Pause Menu
+  openModalButtons.addEventListener('click', function() {const modal = document.querySelector(openModalButtons.dataset.modalTarget); openModal(modal); } );
+
+  // closeModalButtons.addEventListener('click', function() {const modal = closeModalButtons.closest('.pause-modal'); closeModal(modal);} );
+  
+  //Close Pause Menu to continue game
+  closeModalButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const modal = button.closest('.pause-modal');
+      closeModal(modal);
+    })
+  })
+
+  restartButton.addEventListener('click', function() {location.reload();})
+
+  menuButton.addEventListener('click', function() {location.href = "../UI/game-select.html";})
+  
+  function openModal(modal) {
+    if (modal == null) return;
+    pauseClicked();
+    modal.classList.add('active');
+    overlay.classList.add('active');
+    
+  }
+  
+  function closeModal(modal) {
+    if (modal == null) return;
+    resume();
+    modal.classList.remove('active');
+    overlay.classList.remove('active');
+  }
+
+
+  /* END OF GAME */
+
+
+
+
+  /* HIGH SCORE */
