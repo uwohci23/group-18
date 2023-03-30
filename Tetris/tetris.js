@@ -628,10 +628,9 @@ function getRandomInt2(min, max) {
   const overlay = document.getElementById('overlay'); //screen  
 
   const modal = document.querySelector(openModalButtons.dataset.modalTarget);
-  //console.log(modal)
   
   //Open Pause Menu
-  openModalButtons.addEventListener('click', function() {openModal(modal); } );
+  openModalButtons.addEventListener('click', function() {const modal = document.querySelector(openModalButtons.dataset.modalTarget); openModal(modal); } );
 
   // closeModalButtons.addEventListener('click', function() {const modal = closeModalButtons.closest('.pause-modal'); closeModal(modal);} );
   
@@ -664,115 +663,3 @@ function getRandomInt2(min, max) {
 
 
   /* END OF GAME */
-  const gameOverModal = document.getElementById('game-over-modal');
-  const restartGameButton = document.getElementById('restart-game');
-  const goMenuButton = document.getElementById('go-menu');
-  const playerNameInput = document.getElementById('player-name');
-  const finalScoreSpan = document.getElementById('final-score');
-  const submitScore = document.getElementById('submit-button')
-  
-  //openGameOverModal()
-
-  //Submit Score event
-  submitScore.addEventListener('click', saveHighScore);
-
-  // Restart event
-  restartGameButton.addEventListener('click', function() {location.reload();});
-
-  // Menu event
-  goMenuButton.addEventListener('click', function() {location.href = "../UI/game-select.html";});
-
-  function openGameOverModal() {
-    //console.log(score);
-    if(isHighScore())
-    {
-      restartGameButton.disabled = true;
-      goMenuButton.disabled = true;
-    }
-    if(isLowScore())
-    {
-      submitScore.disabled = true;
-    }
-    finalScoreSpan.textContent = score;
-    document.addEventListener('keydown', function(event) {
-      console.log(event.keyCode);
-    });
-    gameOverModal.classList.add('active');
-    overlay.classList.add('active');
-  }
-
-  function closeGameOverModal() {
-    gameOverModal.classList.remove('active');
-    overlay.classList.remove('active');
-  }
-
-
-
-
-  /* HIGH SCORE */
-
-  const NO_OF_HIGH_SCORES = 10;
-  const HIGH_SCORES = 'Tetris top scores';
-
-  const highScoreString = localStorage.getItem(HIGH_SCORES);
-  const highScores = JSON.parse(highScoreString) ?? {
-            easy_scores: [],
-            medium_scores: [],
-            hard_scores: []
-        };
-
-  function saveHighScore()
-  {
-    const name = document.querySelector("#player-name").value;
-
-    var highScoresMedium = highScores["medium_scores"];
-
-    const newScore = { score, name };
-
-    // 1. Add to list
-    console.log(JSON.stringify(highScoresMedium))
-    highScoresMedium.push(newScore);
-    console.log(JSON.stringify(highScoresMedium))
-  
-    // 2. Sort the list
-    highScoresMedium.sort((a, b) => b.score - a.score);
-    
-    // 3. Select new list
-    highScoresMedium.splice(NO_OF_HIGH_SCORES);
-    
-    // 4. Save to local storage
-    highScores["medium_scores"] = highScoresMedium;
-    localStorage.setItem(HIGH_SCORES, JSON.stringify(highScores));
-
-    submitScore.disabled = true;
-    restartGameButton.disabled = false;
-    goMenuButton.disabled = false;
-
-  }
-
-
-   function isHighScore() 
-   {
-    var highScoresMedium = highScores["medium_scores"];
-    const highestScore = highScoresMedium[0]?.score ?? 0;
-    console.log("score " + score)
-    console.log("highestScore " + highestScore)
-    if (!(score > highestScore)){
-        return false;
-    }
-
-    return true;
-  }
-
-  function isLowScore() 
-   {
-    var highScoresMedium = highScores["medium_scores"];
-    const lowestScore = highScoresMedium[NO_OF_HIGH_SCORES-1]?.score ?? 0;
-    console.log("score " + score)
-    console.log("lowest " + lowestScore)
-    if (score < lowestScore){
-        return true;
-    }
-
-    return false;
-  }
