@@ -695,7 +695,6 @@ function getRandomInt2(min, max) {
     }
     finalScoreSpan.textContent = score;
     document.addEventListener('keydown', function(event) {
-      console.log(event.keyCode);
     });
     gameOverModal.classList.add('active');
     overlay.classList.add('active');

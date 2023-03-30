@@ -121,10 +121,12 @@ canvas {
 
 /* For Pause Menu Styling */
 #pause-button {
+  font-size: larger;
   position: fixed;
   top: 10px;
   right: 10px;
 }
+
 
 .pause-modal  {
   position: fixed;
@@ -136,31 +138,41 @@ canvas {
   border-radius: 10px;
   z-index: 10;
   background-color: white;
-  width: 600px;
-  height: 500px;
+  width: 400px;
   max-width: 80%;
-  display: flex;
+  display: inline-block;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
+.pause-modal {
+border-radius: 12px;
+padding: 24px;
+text-align: center;
+z-index: 1000;
+}
+
 .pause-modal.active {
+  display: inline-block;
   transform: translate(-50%, -50%) scale(1);
+  transition: 200ms ease-in-out;
 }
 
 .pause-modal .pause-button {
-width: 80%;
-height: 20%;
-margin-top: 15px;
-margin-bottom: 15px;
-background-color: #999;
-color: white;
-font-size: 32px;
+  display: inline-block;
+  margin: 8px;
+  padding: 8px 16px;
+  min-width: 40px;
+  background-color: #f1c40f;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 .pause-modal .pause-button:hover {
-background-color: #666;
+  background-color: #666;
 }
 
 #overlay {
@@ -181,25 +193,43 @@ pointer-events: all;
 }
 
 
-.game-over-modal  {
-position: fixed;
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%) scale(0);
-transition: 200ms ease-in-out;
-border: 1px solid black;
-border-radius: 10px;
-z-index: 10;
-background-color: white;
-width: 600px;
-height: 500px;
-max-width: 80%;
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
+.game-over-modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  max-width: 400px;
+  background-color: white;
+  border-radius: 12px;
+  padding: 24px;
+  text-align: center;
+  z-index: 1000;
 }
 
 .game-over-modal.active {
-transform: translate(-50%, -50%) scale(1);
+  display: block;
+}
+
+.game-over-button {
+  display: inline-block;
+  margin: 8px;
+  padding: 8px 16px;
+  background-color: #f1c40f;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.game-over-button[disabled] {
+  display: inline-block;
+  margin: 8px;
+  padding: 8px 16px;
+  background-color: #c09f1a;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
