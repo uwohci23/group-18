@@ -138,3 +138,52 @@ input[type="radio"]:checked + .checkmark {
 .tetris-body {
 
 }
+
+.instructions-modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  max-width: 600px;
+  background-color: white;
+  border-radius: 12px;
+  padding: 24px;
+  z-index: 1000;
+}
+
+.instructions-modal.active {
+  display: grid;
+}
+
+.instructions-text {
+  font-size: 25px;
+}
+
+.instructions-close {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  top: 5px;
+  right: 5px;
+  border-radius: 50%;
+  border: none;
+  background-color: #f1c40f;
+}
+
+#overlay {
+  position: fixed;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+}
+
+#overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}

@@ -12,7 +12,7 @@
       </form>
       <h3 class="title">Tetris</h3>
     </div>
-    <button class="game-info-button">Instructions</button>
+    <button class="game-info-button" id="instructions-open">Instructions</button>
     <div class="difficulty-radio-buttons">
       <label>
         <input type="radio" name="difficulty" value="easy" checked>
@@ -30,5 +30,15 @@
     <form class="play-form" action="../Tetris/tetris.html">
       <button class="play-button">Play⏵</button>
     </form>
+    <div class="instructions-modal" id="instructions-modal">
+      <button class="instructions-close" id="instructions-close">X</button>
+      <div class="instructions-text">
+        In Tetris, players complete lines by moving differently shaped pieces (tetrominoes), which descend 
+        onto the playing field. The completed lines disappear and grant the player points, and the player 
+        can proceed to fill the vacated spaces. The game ends when the uncleared lines reach the top of the playing field.
+      </div>
+    </div>
+    <div id="overlay"></div>
+    <script src="instructions.js" type="module"></script>
   </body>
 </html>

@@ -12,7 +12,7 @@
       </form>
       <h3 class="title">Minesweeper</h3>
     </div>
-    <button class="game-info-button">Instructions</button>
+    <button class="game-info-button" id="instructions-open">Instructions</button>
     <div class="difficulty-radio-buttons">
       <label>
         <input type="radio" name="difficulty" value="easy" checked>
@@ -30,6 +30,16 @@
     <form class="play-form" action="../Minesweeper/minesweeper.html">
       <button class="play-button">Play⏵</button>
     </form>
+    <div class="instructions-modal" id="instructions-modal">
+      <button class="instructions-close" id="instructions-close">X</button>
+      <div class="instructions-text">
+        Minesweeper is single-player logic-based computer game played on rectangular board whose object is to 
+        locate a predetermined number of randomly-placed "mines" in the shortest possible time by clicking on 
+        "safe" squares while avoiding the squares with mines. If the player clicks on a mine, the game ends.
+      </div>
+    </div>
+    <div id="overlay"></div>
+    <script src="instructions.js" type="module"></script>
     <script>
       localStorage.setItem('ms-difficulty', 'easy')
       const easyButton = document.querySelector('input[value="easy"]')
