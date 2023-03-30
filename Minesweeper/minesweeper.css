@@ -66,3 +66,11 @@ body {
 .board > [data-status="marked"] {
   background-color: yellow;
 }
+
+h2 {
+  color: black
+}
+
+p{
+  color: black;
+}

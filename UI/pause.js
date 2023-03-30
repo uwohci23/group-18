@@ -25,6 +25,7 @@ overlay.addEventListener('click', () => {
 closeModalButtons.forEach(button => {
   button.addEventListener('click', () => {
     const modal = button.closest('.pause-modal');
+    
     closeModal(modal);
   })
 })
@@ -40,10 +41,12 @@ menuButton.addEventListener('click', () => {
 })
 
 function openModal(modal) {
-  if (modal == null) return;
-  stop();
-  modal.classList.add('active');
-  overlay.classList.add('active');
+  if(!overlay.classList.contains("active")){
+    if (modal == null) return;
+    stop();
+    modal.classList.add('active');
+    overlay.classList.add('active');
+  }
 }
 
 function closeModal(modal) {

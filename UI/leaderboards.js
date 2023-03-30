@@ -51,7 +51,15 @@ function updateLeaderboard(game, difficulty){
     const name_cell = document.createElement("td");
     name_cell.textContent = element.name;
     const score_cell = document.createElement("td");
-    score_cell.textContent = element.score;
+
+    if(game == "Minesweeper"){
+    const minutes = Math.floor(element.score / 60);
+    const seconds = element.score % 60;
+    const paddedSeconds = seconds.toString().padStart(2, '0');
+    score_cell.textContent = `${minutes}:${paddedSeconds}`;
+    }else
+      score_cell.textContent = element.score;
+    
     
     new_row.appendChild(position_cell);
     new_row.appendChild(name_cell);
@@ -66,7 +74,4 @@ function updateLeaderboard(game, difficulty){
 window.addEventListener("load", () => {
   updateLeaderboard("Snake", "Easy");
 });
-
-localStorage.setItem('Snake top scores', JSON.stringify(snake_top_scores));
-
 

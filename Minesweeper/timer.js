@@ -23,14 +23,29 @@ function timer() {
 }
 
 export function start() {
-  if (interval) {
-    return;
-  }
+  if(timerElement){
+    if (interval) {
+      return;
+    }
   
-  interval = setInterval(timer, 1000);
+    interval = setInterval(timer, 1000);
+  }
 }
 
 export function stop() {
-  clearInterval(interval);
-  interval = null;
+  if(timerElement){
+    clearInterval(interval);
+    interval = null;
+  }
+}
+
+export function getTime(){
+  return time;
+}
+
+export function formatTime(t){
+  const minutes = Math.floor(t / 60);
+  const seconds = t % 60;
+  const paddedSeconds = seconds.toString().padStart(2, '0');
+  return `${minutes}:${paddedSeconds}`;
 }

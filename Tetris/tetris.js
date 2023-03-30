@@ -18,8 +18,6 @@ switched = false;
 clear2 = true;
 let start = 0;
 
-
-
 updateScore(score);
 
 function getRandomInt2(min, max) {

@@ -5,9 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="minesweeper.css">
     <link rel="stylesheet" href="../UI/pause.css"> 
-    <script src="minesweeper.js" type="module"></script>
-    <script src="timer.js" type="module"></script>
-    <script src="../UI/pause.js" type="module"></script>
+    <link href="../UI/endmenu.css" rel="stylesheet">
     <title>Minesweeper</title>
   </head>
   <body>
@@ -27,6 +25,19 @@
       <button class="pause-button" id="restart">Restart</button>
       <button class="pause-button" id="menu">Menu</button>
     </div>
+    <div class="game-over-modal" id="game-over-modal">
+      <h2>Game Over</h2>
+      <p>Your Score: <span id="final-score"></span></p>
+      <label for="player-name">Name:</label>
+      <input type="text" id="player-name"/>
+      <button class="game-over-button" id="submit-button">Submit</button>
+      <button class="game-over-button" id="restart-game">Play Again</button>
+      <button class="game-over-button" id="go-menu">Menu</button>
+    </div>
     <div id="overlay"></div>
   </body>
+  <script src="minesweeper.js" type="module"></script>
+  <script src="timer.js" type="module"></script>
+  <script src="../UI/pause.js" type="module"></script>
+  <script src="../UI/endmenu.js" type="module"></script>
 </html>
