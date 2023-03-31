@@ -497,7 +497,7 @@ function getRandomInt2(min, max) {
   //   }
   // }
 
-  function changeColor(blockType, newColor) 
+  function changeBlockColor(blockType, newColor) 
   {
     const blockColor = colors[blockType];
   
@@ -522,6 +522,44 @@ function getRandomInt2(min, max) {
     console.log(`Changed color of ${blockType} block from ${blockColor} to ${colors[blockType]}`);
   }
   //changeColor("O", "Brown");
+
+  function changeBackgroundColor(id, color) 
+  {
+    const element = document.getElementById(id);
+    element.style.backgroundColor = color;
+  }
+  // changeBackgroundColor("gameScreen", "Blue")
+  // changeBackgroundColor("body", "Red")
+  //changeBackgroundColor("game", "gray")
+
+  function whiteTheme()
+  {
+    for (const blockType in colors) {
+      colors[blockType] = "white";
+    }
+  }
+  //whiteTheme()
+
+  function redBlue()
+  {
+    for (const blockType in colors) 
+    {
+      colors[blockType] = "red";
+    }
+
+    const elements = [document.getElementById("gameScreen"), document.getElementById("body")];
+    
+    for (let i = 0; i < elements.length; i++) 
+    {
+      console.log(elements)
+      //console.log(element)
+      const element = elements[i];
+      console.log(element);
+      element.style.backgroundColor = "blue";
+    }
+    
+  }
+  //redBlue()
   
   let count = 0;
   let tetromino = getNextTetromino();
