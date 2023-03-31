@@ -28,10 +28,3 @@ button:hover{
     justify-content: space-around;
     
 }
-
-.game-over-button .confirm-btn{
-    color: red;
-}
-.cancel-btn{
-    margin: 200px;
-}

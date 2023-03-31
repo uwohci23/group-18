@@ -7,6 +7,8 @@ body {
   background-color: #232325d2;
   background-image: url("../Media/minesweeper_background.jpg");
   background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 96vh;
 }
 
 .snake-body{
