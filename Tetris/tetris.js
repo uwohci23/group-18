@@ -530,6 +530,7 @@ function getRandomInt2(min, max) {
   }
   // changeBackgroundColor("gameScreen", "Blue")
   // changeBackgroundColor("body", "Red")
+  //changeBackgroundColor("game", "gray")
 
   function whiteTheme()
   {
