@@ -1,5 +1,4 @@
 import { stop, start } from "../Minesweeper/timer.js"
-import { togglePause } from "../Snake/snake.js";
 
 
 const openModalButtons = document.querySelectorAll('[data-modal-target]'); //pause
@@ -46,7 +45,6 @@ function openModal(modal) {
   if(!overlay.classList.contains("active")){
     if (modal == null) return;
     stop();
-    togglePause(); 
     modal.classList.add('active');
     overlay.classList.add('active');
   }
@@ -55,7 +53,6 @@ function openModal(modal) {
 function closeModal(modal) {
   if (modal == null) return;
   start();
-  togglePause();
   modal.classList.remove('active');
   overlay.classList.remove('active');
 }

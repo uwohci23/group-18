@@ -2,7 +2,7 @@ import { openGameOverModal } from '../UI/endmenu.js';saveHighScore
 import { saveHighScore, isHighScore} from "../UI/highscores.js";
 
 window.onload = function() {
-    startGame()
+    startGame();
 };
 
 document.getElementById('submit-button').addEventListener('click', () => {
@@ -223,3 +223,41 @@ function collision(newhead,snake){
     return false;
 }
 
+// PUASE STUFF
+//Add Confirmation after Choosing to Restart or Go to Menu
+const openModalButtons = document.getElementById('pause-button'); //pause
+const closeModalButtons = document.querySelectorAll('[data-modal-close]'); //resume
+const restartButton = document.getElementById('restart'); //restart
+const menuButton = document.getElementById('menu'); //menu
+const overlay = document.getElementById('overlay'); //screen  
+const modal = document.querySelector(openModalButtons.dataset.modalTarget);
+//console.log(modal)
+
+//Open Pause Menu
+openModalButtons.addEventListener('click', function() {openModal(modal); } );
+// closeModalButtons.addEventListener('click', function() {const modal = closeModalButtons.closest('.pause-modal'); closeModal(modal);} );
+
+//Close Pause Menu to continue game
+closeModalButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const modal = button.closest('.pause-modal');
+    closeModal(modal);
+  })
+})
+restartButton.addEventListener('click', function() {location.reload();})
+menuButton.addEventListener('click', function() {location.href = "../UI/game-select.html";})
+
+function openModal(modal) {
+  if (modal == null) return;
+  togglePause();
+  modal.classList.add('active');
+  overlay.classList.add('active');
+  
+}
+
+function closeModal(modal) {
+  if (modal == null) return;
+  togglePause();
+  modal.classList.remove('active');
+  overlay.classList.remove('active');
+}
