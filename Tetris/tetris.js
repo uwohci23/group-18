@@ -497,7 +497,7 @@ function getRandomInt2(min, max) {
   //   }
   // }
 
-  function changeColor(blockType, newColor) 
+  function changeBlockColor(blockType, newColor) 
   {
     const blockColor = colors[blockType];
   
@@ -522,6 +522,13 @@ function getRandomInt2(min, max) {
     console.log(`Changed color of ${blockType} block from ${blockColor} to ${colors[blockType]}`);
   }
   //changeColor("O", "Brown");
+
+  function changeBackgroundColor(id, color) 
+  {
+    const element = document.getElementById(id);
+    element.style.backgroundColor = color;
+  }
+  
   
   let count = 0;
   let tetromino = getNextTetromino();
