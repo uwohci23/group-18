@@ -528,7 +528,37 @@ function getRandomInt2(min, max) {
     const element = document.getElementById(id);
     element.style.backgroundColor = color;
   }
-  
+  // changeBackgroundColor("gameScreen", "Blue")
+  // changeBackgroundColor("body", "Red")
+
+  function whiteTheme()
+  {
+    for (const blockType in colors) {
+      colors[blockType] = "white";
+    }
+  }
+  //whiteTheme()
+
+  function redBlue()
+  {
+    for (const blockType in colors) 
+    {
+      colors[blockType] = "red";
+    }
+
+    const elements = [document.getElementById("gameScreen"), document.getElementById("body")];
+    
+    for (let i = 0; i < elements.length; i++) 
+    {
+      console.log(elements)
+      //console.log(element)
+      const element = elements[i];
+      console.log(element);
+      element.style.backgroundColor = "blue";
+    }
+    
+  }
+  //redBlue()
   
   let count = 0;
   let tetromino = getNextTetromino();
