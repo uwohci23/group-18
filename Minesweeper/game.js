@@ -47,8 +47,10 @@ export function flagTile(tile) {
 
   if (tile.status === TILE_STATUS.MARKED) {
     tile.status = TILE_STATUS.HIDDEN
+    tile.element.textContent = ""
   } else {
     tile.status = TILE_STATUS.MARKED
+    tile.element.textContent = "🚩"
   }
 }
 
@@ -61,6 +63,7 @@ export function revealTile(board, tile) {
 
   if (tile.mine) {
     tile.status = TILE_STATUS.MINE
+    tile.element.textContent = "💣"
     return
   }
 

@@ -1,6 +1,8 @@
 const instructionsModal = document.getElementById('instructions-modal');
 const openButton = document.getElementById('instructions-open');
 const closeButton = document.getElementById('instructions-close');
+const speechButton = document.getElementById('instructions-speech');
+const gameDescription = document.getElementById('instructions-desc');
 
 // Open event
 openButton.addEventListener('click', () => {
@@ -12,7 +14,14 @@ closeButton.addEventListener('click', () => {
   closeInstructionsModal();
 });
 
-export function openInstructionsModal(score) {
+// Speech event
+speechButton.addEventListener('click', e => {
+  e.preventDefault();
+  const utterance = new SpeechSynthesisUtterance(gameDescription.textContent);
+  speechSynthesis.speak(utterance);
+});
+
+export function openInstructionsModal() {
   instructionsModal.classList.add('active');
   overlay.classList.add('active');
 }
