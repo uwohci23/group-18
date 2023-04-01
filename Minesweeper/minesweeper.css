@@ -85,10 +85,10 @@ p{
   border-radius: 10px;
   z-index: 1000;
   background-color: white;
-  width: 200px;
+  width: 220px;
+  height: 80px;
   max-width: 80%;
   display: none;
   align-items: center;
   justify-content: space-around;
-  
 }
