@@ -247,3 +247,43 @@ pointer-events: all;
 #highScore{
   font-family: cursive;
 }
+
+.confirmation-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: 200ms ease-in-out;
+  border: 1px solid black;
+  border-radius: 10px;
+  z-index: 1000;
+  background-color: white;
+  width: 400px;
+  max-width: 80%;
+  display: none;
+  text-align: center;
+  padding: 24px;
+}
+
+.confirm-button {
+  display: inline-block;
+  margin: 8px 25px;
+  padding: 8px 16px;
+  background-color: #f1c40f;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#notification {
+  display: none;
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  z-index: 1000;
+}

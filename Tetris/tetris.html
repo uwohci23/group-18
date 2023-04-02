@@ -15,9 +15,10 @@
       | |
     </button>
     <div class="pause-modal" id="ms-modal">
-        <button data-modal-close class="pause-button">Resume (p)</button>
-        <button class="pause-button" id="restart">Restart (r)</button>
-        <button class="pause-button" id="menu">Menu (m)</button>
+      <h2>Pause Menu</h2><br>
+      <button data-modal-close class="pause-button">Resume (p)</button>
+      <button class="pause-button" id="restart">Restart (r)</button>
+      <button class="pause-button" id="menu">Menu (m)</button>
     </div>
 
     <!--Game Over Stuff-->
@@ -35,6 +36,12 @@
       <button class="game-over-button" id="go-menu">Menu (m)</button>
     </div> 
 
+    <div class="confirmation-modal" id="confirmation-modal">
+      <h2 id="confirmMsg"></h2><br>
+      <button class="confirm-button" id="cancel">No (n)</button>
+      <button class="confirm-button" id="continue">Yes (y)</button>
+    </div>
+
     <div id="overlay"></div>
     <div id="gameScreen">
       <div id="lhs">
@@ -49,6 +56,7 @@
         <div id="score"></div>
       </div>
     </div>
+    <div id="notification">You have been added to the Leaderboard!</div>
     
 
 
