@@ -14,6 +14,13 @@ closeButton.addEventListener('click', () => {
   closeInstructionsModal();
 });
 
+// Speech event
+speechButton.addEventListener('click', e => {
+  e.preventDefault();
+  const utterance = new SpeechSynthesisUtterance(gameDescription.textContent);
+  speechSynthesis.speak(utterance);
+});
+
 
 export function openInstructionsModal() {
   instructionsModal.classList.add('active');
@@ -24,3 +31,4 @@ export function closeInstructionsModal() {
   instructionsModal.classList.remove('active');
   overlay.classList.remove('active');
 }
+
