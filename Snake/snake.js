@@ -1,5 +1,5 @@
-import { openGameOverModal } from '../UI/endmenu.js';saveHighScore
-import { saveHighScore, isHighScore} from "../UI/highscores.js";
+import { openGameOverModal } from '../UI/endmenu.js';
+import { saveHighScore, isHighScore, isHighestScore} from "../UI/highscores.js";
 
 window.onload = function() {
     startGame();
@@ -9,7 +9,7 @@ document.getElementById('submit-button').addEventListener('click', () => {
     const score = document.querySelector("#final-score").textContent;
     const name = document.querySelector("#player-name").value;
     saveHighScore("Snake", difficulty, score, name);
-    document.querySelector("#submit-button").style.display = "none";
+    document.querySelector("#submit-button").disabled = true;
 });
 
 const difficulty = localStorage.getItem('snake-difficulty')
@@ -170,17 +170,16 @@ function draw(){
         dead.play();
         clearInterval(game);
 
-        ctx.fillStyle="green";
-        ctx.fillRect(5*box, 8*box, 7*box, 3*box);
-
-        ctx.fillStyle="white";
-        ctx.font="30px Changa One";
-        ctx.fillText("Your Score: " + score, 6*box, 10*box);
+        
         openGameOverModal(score);
         if(!isHighScore(score, "Snake", difficulty)){
             document.querySelector(".game-over-modal label").style.display = "none";
             document.querySelector(".game-over-modal input").style.display = "none";
             document.querySelector("#submit-button").style.display = "none";
+        }
+        if(isHighestScore(score, "Snake", difficulty)){
+            document.querySelector("#restart-game").disabled = true;
+            document.querySelector("#go-menu").disabled = true;
         }
     }
 

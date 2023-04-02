@@ -1,4 +1,4 @@
-const NO_OF_HIGH_SCORES = 3;
+const NO_OF_HIGH_SCORES = 10;
 const HIGH_SCORES = ' top scores';
 
 export function isHighScore(score, game, difficulty) {
@@ -6,6 +6,16 @@ export function isHighScore(score, game, difficulty) {
     var highScoresForCurrentDifficulty = highScores[`${difficulty}_scores`] ?? [];
     const lowestScore = highScoresForCurrentDifficulty[NO_OF_HIGH_SCORES - 1]?.score ?? 0;
     if (!(score > lowestScore)){
+        return false;
+    }
+    return true;
+}
+
+export function isHighestScore(score, game, difficulty){
+    var highScores = JSON.parse(localStorage.getItem(game + HIGH_SCORES)) ?? [];
+    var highScoresForCurrentDifficulty = highScores[`${difficulty}_scores`] ?? [];
+    const highestScore = highScoresForCurrentDifficulty[0]?.score ?? 0;
+    if (!(score > highestScore)){
         return false;
     }
     return true;
@@ -22,6 +32,17 @@ export function isFastScore(score, game, difficulty) {
     }
     return false;
 }
+
+export function isFastestScore(score, game, difficulty) {
+    var highScores = JSON.parse(localStorage.getItem(game + HIGH_SCORES)) ?? [];
+    var highScoresForCurrentDifficulty = highScores[`${difficulty}_scores`] ?? [];
+    const fastestScore = highScoresForCurrentDifficulty[0]?.score ?? 9999999;
+    if (!(score < fastestScore)){
+        return false;
+    }
+    return true;
+}
+
 
 export function saveHighScore(game, difficulty, score, name) {
     var highScores = JSON.parse(localStorage.getItem(game + HIGH_SCORES));
@@ -54,4 +75,8 @@ export function saveHighScore(game, difficulty, score, name) {
     // 4. Save to local storage
     highScores[`${difficulty}_scores`] = highScoresForCurrentDifficulty;
     localStorage.setItem(game + HIGH_SCORES, JSON.stringify(highScores));
+
+    document.getElementById('submit-button').disabled = true;
+    document.getElementById('restart-game').disabled = false;
+    document.getElementById('go-menu').disabled = false;
 };
