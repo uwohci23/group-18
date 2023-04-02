@@ -37,6 +37,16 @@ switch (difficulty) {
     break
 }
 
+// Set high score
+const highScore = document.querySelector('.highscore');
+let top_scores = JSON.parse(localStorage.getItem(`Minesweeper top scores`));
+if (top_scores[`${difficulty.toLowerCase()}_scores`][0]) {
+    highScore.textContent = "High Score: " + formatTime(top_scores[`${difficulty.toLowerCase()}_scores`][0].score);
+} else {
+    highScore.textContent = "High Score: 0"; 
+};
+
+// Create board
 const board = createBoard(boardHeight, boardWidth, numMines)
 const boardElement = document.querySelector('.board')
 const minesLeftText = document.querySelector('[data-mine-count]')

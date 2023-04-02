@@ -23,6 +23,13 @@ body {
   margin: 5px
 }
 
+.highscore {
+  color: #CCC;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+}
+
 .subtext {
   color: #CCC;
   font-size: 1rem;

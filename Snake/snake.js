@@ -96,7 +96,12 @@ let d;
 // restart the game
 function startGame(){
     clearInterval(game);
-    highscore = Math.max(score, highscore);
+    let top_scores = JSON.parse(localStorage.getItem(`Snake top scores`));
+    if (top_scores[`${difficulty.toLowerCase()}_scores`][0]) {
+        highscore = top_scores[`${difficulty.toLowerCase()}_scores`][0].score;
+    } else {
+        highscore = 0;
+    };
     score = 0; 
     // create the snake
     snake = [];
@@ -192,7 +197,7 @@ function draw(){
     ctx.fillText(score,2*box,1.6*box);
 
     ctx.font = "30px Changa one";
-    ctx.fillText("Highest score: " + highscore,12*box,1.6*box);
+    ctx.fillText("Highest Score: " + highscore,12*box,1.6*box);
     
 }
 
