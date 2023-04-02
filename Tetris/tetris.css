@@ -3,6 +3,11 @@ html, body {
   margin: 0;
 }
 
+#lhs {
+  padding-top: 5vh;
+  padding-bottom: 0vh;
+}
+
 #rhs {
   padding-bottom: 45vh;
 }
@@ -26,10 +31,11 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: math;
 }
 
 #gameScreen.hide {
-  opacity: 0.05;
+  opacity: 0.03;
   background: black;
   display: flex;
   align-items: center;
@@ -59,8 +65,8 @@ canvas {
   color: red;
   background: white;
   width:100px;
-  margin-left: 20px;
-  text-align: left;
+  margin-left: 35px;
+  text-align: center;
 }
 
 #timer{
@@ -119,7 +125,7 @@ canvas {
 }
 
 #game.hide {
-  opacity: 0.05;
+  opacity: 0.03;
 }
 
 /* For Pause Menu Styling */
@@ -209,6 +215,7 @@ pointer-events: all;
   padding: 24px;
   text-align: center;
   z-index: 1000;
+  font-family: cursive;
 }
 
 .game-over-modal.active {
@@ -237,21 +244,6 @@ pointer-events: all;
   cursor: pointer;
 }
 
-.confirmation-panel {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  transition: 200ms ease-in-out;
-  border: 1px solid black;
-  border-radius: 10px;
-  z-index: 1000;
-  background-color: white;
-  width: 220px;
-  height: 80px;
-  max-width: 80%;
-  display: none;
-  align-items: center;
-  justify-content: space-around;
-  
+#highScore{
+  font-family: cursive;
 }
