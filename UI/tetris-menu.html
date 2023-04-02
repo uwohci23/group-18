@@ -32,7 +32,7 @@
       </label>
     </div>
 
-    <form class="play-form" action="../Tetris/tetris.html">
+    <form id="play-form" class="play-form" action="../Tetris/tetris.html">
       <button class="play-button">Play⏵</button>
     </form>
     <div class="instructions-modal" id="instructions-modal">
@@ -209,6 +209,22 @@
     <div id="overlay"></div>
     <script src="instructions.js" type="module"></script>
     <script src="settings.js" type="module"></script>
+    <script>
+      const playForm = document.getElementById("play-form");
+      const playButton = document.querySelector(".play-button");
+
+      playButton.addEventListener("click", function(event) {
+        const difficultyLevel = document.querySelector('input[name="difficulty"]:checked').value;
+
+        if (difficultyLevel === "easy") {
+          playForm.action = "../Tetris/tetris2.html";
+        } else if (difficultyLevel === "hard") {
+          playForm.action = "../Tetris/tetris3.html";
+        }
+      });
+
+
+    </script>
 
 
   </body>

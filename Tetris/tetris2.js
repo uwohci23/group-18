@@ -60,8 +60,8 @@ document.addEventListener('DOMContentLoaded', () => {
   var highestScore = 0;
   if(highScores)
   {
-    var highScoresMedium = highScores["medium_scores"];
-    highestScore = highScoresMedium[0]?.score ?? 0;
+    var highScoresEasy = highScores["easy_scores"];
+    highestScore = highScoresEasy[0]?.score ?? 0;
   }  
 
 
@@ -655,7 +655,7 @@ function getRandomInt2(min, max) {
   
       // tetromino falls every 35 frames
       //Control how fast the tetrimino falls
-      if (++count > 60) {
+      if (++count > 100) {
         tetromino.row++;
         count = 0;
   
@@ -1000,8 +1000,8 @@ function getRandomInt2(min, max) {
 
     if(name.trim() == "")
     {
-      alert("Please use the text area to enter a name to go with your score!");
-      return;
+        alert("Please use the text area to enter a name to go with your score!");
+        return;
     }
 
     notification.style.display = "block";
@@ -1010,23 +1010,23 @@ function getRandomInt2(min, max) {
     }, 2000);
     
 
-    var highScoresMedium = highScores["medium_scores"];
+    var highScoresEasy = highScores["easy_scores"];
 
     const newScore = { score, name };
 
     // 1. Add to list
-    console.log(JSON.stringify(highScoresMedium))
-    highScoresMedium.push(newScore);
-    console.log(JSON.stringify(highScoresMedium))
+    console.log(JSON.stringify(highScoresEasy))
+    highScoresEasy.push(newScore);
+    console.log(JSON.stringify(highScoresEasy))
   
     // 2. Sort the list
-    highScoresMedium.sort((a, b) => b.score - a.score);
+    highScoresEasy.sort((a, b) => b.score - a.score);
     
     // 3. Select new list
-    highScoresMedium.splice(NO_OF_HIGH_SCORES);
+    highScoresEasy.splice(NO_OF_HIGH_SCORES);
     
     // 4. Save to local storage
-    highScores["medium_scores"] = highScoresMedium;
+    highScores["easy_scores"] = highScoresEasy;
     localStorage.setItem(HIGH_SCORES, JSON.stringify(highScores));
 
     submitScore.disabled = true;
@@ -1038,8 +1038,8 @@ function getRandomInt2(min, max) {
 
    function isHighScore() 
    {
-    var highScoresMedium = highScores["medium_scores"];
-    const highestScore = highScoresMedium[0]?.score ?? 0;
+    var highScoresEasy = highScores["easy_scores"];
+    const highestScore = highScoresEasy[0]?.score ?? 0;
     console.log("score " + score)
     console.log("highestScore " + highestScore)
     if (!(score > highestScore)){
@@ -1051,8 +1051,8 @@ function getRandomInt2(min, max) {
 
   function isLowScore() 
    {
-    var highScoresMedium = highScores["medium_scores"];
-    const lowestScore = highScoresMedium[NO_OF_HIGH_SCORES-1]?.score ?? 0;
+    var highScoresEasy = highScores["easy_scores"];
+    const lowestScore = highScoresEasy[NO_OF_HIGH_SCORES-1]?.score ?? 0;
     console.log("score " + score)
     console.log("lowest " + lowestScore)
     if (score < lowestScore){
