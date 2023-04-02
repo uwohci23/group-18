@@ -8,6 +8,10 @@ window.onload = function() {
 document.getElementById('submit-button').addEventListener('click', () => {
     const score = document.querySelector("#final-score").textContent;
     const name = document.querySelector("#player-name").value;
+    if(name.trim() == ""){
+        alert("Please use the text area to enter a name to go with your score!");
+        return;
+    }
     saveHighScore("Snake", difficulty, score, name);
     document.querySelector("#submit-button").disabled = true;
 });

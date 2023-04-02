@@ -7,6 +7,10 @@ import { saveHighScore, isFastScore, isFastestScore} from "../UI/highscores.js";
 document.getElementById('submit-button').addEventListener('click', () => {
   const score = document.querySelector("#final-score").textContent;
   const name = document.querySelector("#player-name").value;
+  if(name.trim() == ""){
+    alert("Please use the text area to enter a name to go with your score!");
+    return;
+  }
   saveHighScore("Minesweeper", difficulty, getTime(), name);
   document.querySelector("#submit-button").disabled = true;
 });
