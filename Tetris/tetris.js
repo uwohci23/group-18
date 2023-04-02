@@ -750,12 +750,65 @@ function getRandomInt2(min, max) {
   {
     if(e.which === 82) 
     {
-      location.reload();
+      confirmation.style.display = 'inline-block';
+      document.querySelector(".pause-modal").classList.remove('active');
+      confirmation.classList.add('restart-cmd');
+      confirmMsgElement.textContent = "Are you sure you would like to restart the current game?";
+      document.removeEventListener('keydown', pausedControl);
+      document.addEventListener('keydown', restartEndControl);
     }
     if(e.which === 77 || e.which === 81) 
     {
-      resetdefault()
+      confirmation.style.display = 'inline-block';
+      document.querySelector(".pause-modal").classList.remove('active')
+      confirmMsgElement.textContent = "Are you sure you would like to exit the current game?";
+      document.removeEventListener('keydown', pausedControl);
+      document.addEventListener('keydown', MenuEndControl);
+    }
+  }
+
+  function restartEndControl(e)
+  {
+    if(e.which === 89) 
+    {
+      location.reload();
+      confirmationPanel.classList.remove('restart-cmd');
+    }
+    if(e.which === 67 || e.which === 78) 
+    {
+      document.addEventListener('keydown', pausedControl);
+      document.removeEventListener('keydown', MenuEndControl);
+      confirmation.classList.remove('restart-cmd');
+    if(confirmation.classList.contains('end')) 
+    {
+      document.querySelector(".game-over-modal").classList.add('active');
+    }
+    else
+    {
+      document.querySelector(".pause-modal").classList.add('active');
+    }
+    confirmation.style.display = 'none';
+    }
+  }
+  function MenuEndControl(e)
+  {
+    if(e.which === 89) 
+    {
+      resetdefault();
       location.href = "../UI/game-select.html";
+    }
+    if(e.which === 67 || e.which === 78) 
+    {
+      confirmation.classList.remove('restart-cmd');
+    if(confirmation.classList.contains('end')) 
+    {
+      document.querySelector(".game-over-modal").classList.add('active');
+    }
+    else
+    {
+      document.querySelector(".pause-modal").classList.add('active');
+    }
+    confirmation.style.display = 'none';
     }
   }
 
@@ -817,9 +870,26 @@ function getRandomInt2(min, max) {
     })
   })
 
-  restartButton.addEventListener('click', function() {location.reload();})
+  //restartButton.addEventListener('click', function() {location.reload();})
+  restartButton.addEventListener('click', function() 
+  {
+    confirmation.style.display = 'inline-block';
+    document.querySelector(".pause-modal").classList.remove('active');
+    confirmation.classList.add('restart-cmd');
+    confirmMsgElement.textContent = "Are you sure you would like to restart the current game?";
+    document.removeEventListener('keydown', pausedControl);
+    document.addEventListener('keydown', restartEndControl);
+  });
 
-  menuButton.addEventListener('click', function() {resetdefault(); location.href = "../UI/game-select.html";})
+  //menuButton.addEventListener('click', function() {resetdefault(); location.href = "../UI/game-select.html";})
+  menuButton.addEventListener('click', function() 
+  {
+    confirmation.style.display = 'inline-block';
+    document.querySelector(".pause-modal").classList.remove('active')
+    confirmMsgElement.textContent = "Are you sure you would like to exit the current game?";
+    document.removeEventListener('keydown', pausedControl);
+    document.addEventListener('keydown', MenuEndControl);
+  });
   
   function openModal(modal) {
     if (modal == null) return;
@@ -852,10 +922,15 @@ function getRandomInt2(min, max) {
   submitScore.addEventListener('click', saveHighScore);
 
   // Restart event
-  restartGameButton.addEventListener('click', function() {location.reload();});
+  restartGameButton.addEventListener('click', function() {location.reload();})
+
 
   // Menu event
-  goMenuButton.addEventListener('click', function() {resetdefault(); location.href = "../UI/game-select.html";});
+  goMenuButton.addEventListener('click', function() 
+  {
+    confirmation.style.display = 'inline-block';
+    document.querySelector(".pause-modal").classList.remove('active')
+  });
 
   function openGameOverModal() {
     document.addEventListener('keydown', pausedControl);
@@ -907,6 +982,11 @@ function getRandomInt2(min, max) {
 
   function saveHighScore()
   {
+
+    notification.style.display = "block";
+    setTimeout(function() {
+      notification.style.display = "none";
+    }, 2000);
     const name = document.querySelector("#player-name").value;
 
     var highScoresMedium = highScores["medium_scores"];
@@ -960,5 +1040,44 @@ function getRandomInt2(min, max) {
 
     return false;
   }
+
+  /* Confirmation Panel */
+  const confirmation = document.getElementById('confirmation-modal');
+  const cancel = document.getElementById('cancel');
+  const confirm = document.getElementById('continue');
+  const confirmMsgElement = document.getElementById('confirmMsg');
+
+
+
+  confirm.addEventListener('click', function() 
+  {
+    if(confirmation.classList.contains('restart-cmd')) 
+    {
+      location.reload();
+      confirmationPanel.classList.remove('restart-cmd');
+    }
+    else
+    {
+      resetdefault();
+      location.href = "../UI/game-select.html";
+    }
+    resetdefault(); location.href = "../UI/game-select.html";
+  });
+
+  cancel.addEventListener('click', function() 
+  {
+    confirmation.classList.remove('restart-cmd');
+    if(confirmation.classList.contains('end')) 
+    {
+      document.querySelector(".game-over-modal").classList.add('active');
+    }
+    else
+    {
+      document.querySelector(".pause-modal").classList.add('active');
+    }
+    confirmation.style.display = 'none';
+  });
+
+
 
 
