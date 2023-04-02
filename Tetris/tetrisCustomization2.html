@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tetris Game</title>
+	<script src="tetrisCustomization.js"></script>
+</head>
+<body>
+	<h1>Tetris Game</h1>
+	<div id="gameScreen">
+		<!-- Game screen will be added here -->
+	</div>
+	<form>
+		<label for="blockTypeSelect">Select block type:</label>
+		<select id="blockTypeSelect" name="blockType">
+			<option value="I">I block</option>
+			<option value="O">O block</option>
+			<option value="T">T block</option>
+			<option value="S">S block</option>
+			<option value="Z">Z block</option>
+			<option value="J">J block</option>
+			<option value="L">L block</option>
+		</select>
+		<button type="button" onclick="changeSelectedBlock()">Change selected block</button>
+	</form>
+
+    <div>
+        <label for="block-select">Select block:</label>
+        <select id="block-select" onchange="showInput()">
+          <option value="I">I</option>
+          <option value="O">O</option>
+          <option value="T">T</option>
+          <option value="S">S</option>
+          <option value="Z">Z</option>
+          <option value="J">J</option>
+          <option value="L">L</option>
+        </select>
+      </div>
+      <div id="input-container" style="display: none;">
+        <label for="block-input">Enter block color or text:</label>
+        <input type="text" id="block-input">
+        <button onclick="updateBlock()">Update</button>
+      </div>
+      
+</body>
+</html>

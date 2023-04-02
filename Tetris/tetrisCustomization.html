@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Game Customization</title>
+    <link rel="stylesheet" href="tetrisCustomization.css">
+    <script defer src="tetris.js"></script>
+  </head>
+  <body>
+    <div id="container">
+      <h1>Tetris Customization</h1>
+      <form id="customize-form">
+        <label for="block-select">Select Block Type:</label>
+        <select id="block-select" name="block-select">
+          <option value="">--Select Block--</option>
+          <option value="I">I Block</option>
+          <option value="O">O Block</option>
+          <option value="T">T Block</option>
+          <option value="S">S Block</option>
+          <option value="Z">Z Block</option>
+          <option value="J">J Block</option>
+          <option value="L">L Block</option>
+        </select>
+        <br><br>
+        <div id="block-input-text" class="block-input">
+          <label for="block-text-input">Enter Text:</label>
+          <input id="block-text-input" name="block-text-input" type="text" placeholder="Enter text for block">
+        </div>
+        <br><br>
+        <div id="block-input-color" class="block-input">
+          <label for="block-color-input">Select Color:</label>
+          <input id="block-color-input" name="block-color-input" type="color">
+        </div>
+        <br><br>
+        <!-- <button type="button" onclick="applyChanges()">Apply Changes</button> -->
+      </form>
+    </div>
+
+    <br><br><br><br>
+
+
+    <script>
+      const form = document.querySelector('form');
+      form.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const cyan = document.getElementById('cyan').value;
+        const yellow = document.getElementById('yellow').value;
+        const purple = document.getElementById('purple').value;
+        const green = document.getElementById('green').value;
+        const red = document.getElementById('red').value;
+        const blue = document.getElementById('blue').value;
+        const orange = document.getElementById('orange').value;
+
+        changeBlockColor('I', cyan);
+        changeBlockColor('O', yellow);
+        changeBlockColor('T', purple);
+        changeBlockColor('S', green);
+        changeBlockColor('Z', red);
+        changeBlockColor('J', blue);
+        changeBlockColor('L', orange);
+
+        whiteTheme();
+      });
+    </script>
+  </body>
+</html>

@@ -6,13 +6,17 @@
     <link rel="stylesheet" href="game-menus.css">
   </head>
   <body class="tetris-body">
+    
     <div class="header">
       <form action="game-select.html">
         <button class="back-button"></button>
       </form>
+      <button class="settings-button" id="settings-open"></button>
       <h3 class="title">Tetris</h3>
     </div>
+
     <button class="game-info-button" id="instructions-open">Instructions</button>
+
     <div class="difficulty-radio-buttons">
       <label>
         <input type="radio" name="difficulty" value="easy" checked>
@@ -27,6 +31,7 @@
         <span class="checkmark">Hard</span>
       </label>
     </div>
+
     <form class="play-form" action="../Tetris/tetris.html">
       <button class="play-button">Play⏵</button>
     </form>
@@ -38,7 +43,142 @@
         can proceed to fill the vacated spaces. The game ends when the uncleared lines reach the top of the playing field.
       </div>
     </div>
+
+
+
+    <div class="settings-modal" id="settings-modal">
+      <h1>Tetris Customization</h1>
+      <button class="settings-close" id="settings-close">X</button>
+      <div class="checkbox-container" style="display: flex; justify-content: space-between;">
+        <div style="display:inline;">
+          <input type="checkbox" id="useDefaults" name="useDefaults" checked>
+          <label for="useDefaults">Default</label>
+        </div>
+        <div id="reset" style="display:inline; margin-left: auto;">
+          <input type="checkbox" id="resetDefaults" name="resetDefaults" checked>
+          <label for="resetDefaults">Reset after Session</label>
+        </div>
+      </div>
+      <div id="container">
+        <form id="colorForm">        
+          <h3>Edit Display:</h3><br>
+          <div class="color-input-container" style="display: block;">
+            <label for="background-color-input">Background Color:</label>
+            <input type="color" id="background-color-input" name="background-color" value="#808080">
+            <br><br><br>
+          </div>
+        
+          <div class="color-input-container" style="display: block;">
+            <label for="game-screen-color-input">Game Screen Color:</label>
+            <input type="color" id="game-screen-color-input" name="game-screen-color" value="#000000">
+            <br><br><br>
+          </div>
+
+          <h3>Edit Tetrominoes:</h3><br>
+
+          <div class="block-colors">
+
+            <div class="color-input-container" style="display: block;">
+              <label for="I_Block">I &ensp;&ensp;&ensp; Block Color:</label>
+              <input type="color" id="I_Block" name="I_Block" value="#00ffff"><br><br><br>
+            </div>
+
+            <div class="color-input-container" style="display: block;">
+              <label for="O_Block">O &ensp;&ensp; Block Color:</label>
+              <input type="color" id="O_Block" name="O_Block" value="#ffff00"><br><br><br>
+            </div>
+      
+            <div class="color-input-container" style="display: block;">
+              <label for="T_Block">T &ensp;&ensp; Block Color:</label>
+              <input type="color" id="T_Block" name="T_Block" value="#800080"><br><br><br>
+            </div>
+      
+            <div class="color-input-container" style="display: block;">
+              <label for="S_Block">S &ensp;&ensp; Block Color:</label>
+              <input type="color" id="S_Block" name="S_Block" value="#008000"><br><br><br>
+            </div>
+      
+            <div class="color-input-container" style="display: block;">
+              <label for="Z_Block">Z &ensp;&ensp; Block Color:</label>
+              <input type="color" id="Z_Block" name="Z_Block" value="#ff0000"><br><br><br>
+            </div>
+      
+            <div class="color-input-container" style="display: block;">
+              <label for="J_Block">J &ensp;&ensp; Block Color:</label>
+              <input type="color" id="J_Block" name="J_Block" value="#0000ff"><br><br><br>
+            </div>
+      
+            <div class="color-input-container" style="display: block;">
+              <label for="L_Block">L &ensp;&ensp; Block Color:</label>
+              <input type="color" id="L_Block" name="L_Block" value="#ffa500"><br><br><br>
+            </div>
+          
+          </div>
+          <br>
+    
+          <input type="submit" id="submit" value="Update Colors" style="position: sticky; bottom: 25px; float: right;">
+        </form>
+      </div>
+      <div id="notification">Changes have been applied</div>
+      <style>
+        /* CSS styles for the page */
+        body {
+          background-color: #f2f2f2;
+          font-family: Arial, sans-serif;
+        }
+        #container {
+          margin: 0 auto;
+          width: 80%;
+        }
+        h1 {
+          text-align: center;
+        }
+        #customize-form {
+          background-color: #fff;
+          border: 1px solid #ddd;
+          border-radius: 5px;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+          margin: 20px 0;
+          padding: 20px;
+        }
+        label {
+          display: block;
+          margin-bottom: 10px;
+          font-weight: bold;
+        }
+        select {
+          margin-bottom: 20px;
+        }
+        .block-input {
+          display: none;
+        }
+  
+        .color-input-container {
+          margin-right: 20px;
+          vertical-align: middle;
+        }
+        
+        .color-input-container label {
+          display: inline-block;
+          margin-right: 5px;
+          vertical-align: middle;
+        }
+        #notification {
+          display: none;
+          position: fixed;
+          bottom: 10px;
+          right: 10px;
+          padding: 10px;
+          background-color: #4CAF50;
+          color: white;
+          z-index: 1;
+        }
+      </style>
+    </div>
     <div id="overlay"></div>
     <script src="instructions.js" type="module"></script>
+    <script src="settings.js" type="module"></script>
+
+
   </body>
 </html>

@@ -12,7 +12,7 @@ closeButton.addEventListener('click', () => {
   closeInstructionsModal();
 });
 
-export function openInstructionsModal(score) {
+export function openInstructionsModal() {
   instructionsModal.classList.add('active');
   overlay.classList.add('active');
 }

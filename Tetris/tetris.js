@@ -16,24 +16,47 @@ switched = false;
 clear2 = true;
 let start = 0;
 
-const validColors = [
-  'AliceBlue', 'AntiqueWhite', 'Aqua', 'Aquamarine', 'Azure', 'Beige', 'Bisque', 'Black', 'BlanchedAlmond', 'Blue',
-  'BlueViolet', 'Brown', 'BurlyWood', 'CadetBlue', 'Chartreuse', 'Chocolate', 'Coral', 'CornflowerBlue', 'Cornsilk',
-  'Crimson', 'Cyan', 'DarkBlue', 'DarkCyan', 'DarkGoldenRod', 'DarkGray', 'DarkGrey', 'DarkGreen', 'DarkKhaki',
-  'DarkMagenta', 'DarkOliveGreen', 'DarkOrange', 'DarkOrchid', 'DarkRed', 'DarkSalmon', 'DarkSeaGreen', 'DarkSlateBlue',
-  'DarkSlateGray', 'DarkSlateGrey', 'DarkTurquoise', 'DarkViolet', 'DeepPink', 'DeepSkyBlue', 'DimGray', 'DimGrey',
-  'DodgerBlue', 'FireBrick', 'FloralWhite', 'ForestGreen', 'Fuchsia', 'Gainsboro', 'GhostWhite', 'Gold', 'GoldenRod',
-  'Gray', 'Grey', 'Green', 'GreenYellow', 'HoneyDew', 'HotPink', 'IndianRed', 'Indigo', 'Ivory', 'Khaki', 'Lavender',
-  'LavenderBlush', 'LawnGreen', 'LemonChiffon', 'LightBlue', 'LightCoral', 'LightCyan', 'LightGoldenRodYellow',
-  'LightGray', 'LightGrey', 'LightGreen', 'LightPink', 'LightSalmon', 'LightSeaGreen', 'LightSkyBlue', 'LightSlateGray',
-  'LightSlateGrey', 'LightSteelBlue', 'LightYellow', 'Lime', 'LimeGreen', 'Linen', 'Magenta', 'Maroon', 'MediumAquaMarine',
-  'MediumBlue', 'MediumOrchid', 'MediumPurple', 'MediumSeaGreen', 'MediumSlateBlue', 'MediumSpringGreen', 'MediumTurquoise',
-  'MediumVioletRed', 'MidnightBlue', 'MintCream', 'MistyRose', 'Moccasin', 'NavajoWhite', 'Navy', 'OldLace', 'Olive',
-  'OliveDrab', 'Orange', 'OrangeRed', 'Orchid', 'PaleGoldenRod', 'PaleGreen', 'PaleTurquoise', 'PaleVioletRed', 'PapayaWhip',
-  'PeachPuff', 'Peru', 'Pink', 'Plum', 'PowderBlue', 'Purple', 'Red', 'RosyBrown', 'RoyalBlue', 'SaddleBrown', 'Salmon',
-  'SandyBrown', 'SeaGreen', 'SeaShell', 'Sienna', 'Silver', 'SkyBlue', 'SlateBlue', 'SlateGray', 'SlateGrey', 'Snow', 'SpringGreen',
-  'SteelBlue', 'Tan', 'Teal', 'Thistle', 'Tomato', 'Turquoise', 'Violet', 'Wheat', 'White', 'WhiteSmoke', 'Yellow', 'YellowGreen'
-];
+document.addEventListener('DOMContentLoaded', () => {
+  console.log(colors);
+  const defaults = localStorage.getItem("useDefaults");
+  console.log(defaults);
+  if(defaults == "false")
+  {
+    const blockColors = JSON.parse(localStorage.getItem("blockColors"));
+    if(blockColors)
+    {    
+      console.log(blockColors)
+      for (const blockType in blockColors) 
+      {
+        console.log(blockType)
+        console.log(blockColors[blockType])
+        changeBlockColor(blockType, blockColors[blockType])
+      }
+    }
+
+    const backgroundColor = JSON.parse(localStorage.getItem("backgroundColor"));
+    const gameScreenColor = JSON.parse(localStorage.getItem("gameScreenColor"));
+    console.log(backgroundColor)
+
+    if(backgroundColor)
+    {
+      console.log("hi")
+      changeBackgroundColor("body", backgroundColor) 
+      changeBackgroundColor("gameScreen", backgroundColor)
+    }
+
+    if(gameScreenColor)
+    {
+      changeBackgroundColor("hold", gameScreenColor)
+      changeBackgroundColor("game", gameScreenColor)
+      changeBackgroundColor("next", gameScreenColor)
+    }
+
+  }
+
+  console.log(colors)
+  tetromino = getNextTetromino();
+});
 
 updateScore(score);
 
@@ -483,43 +506,65 @@ function getRandomInt2(min, max) {
     'L': 'orange'
   };
 
-  // function changeColor(blockType, newColor) 
-  // {
-  //   // Check if color is valid
-  //   if (colors[blockType]) {
-  //     // Update color
-  //     colors[blockType] = newColor;
-  //     console.log(`Color ${blockType} has been updated to ${newColor}`);
-  //   } 
-  //   else 
-  //   {
-  //     console.log(`Invalid block ${blockType}`);
-  //   }
-  // }
+  function resetdefault()
+  {
+    const reset = localStorage.getItem("resetDefaults");
+    console.log(reset);
+    if(reset == "true")
+      defaultColors()
+  }
+  function defaultColors()
+  {
+    const blockColors = {
+      'I': 'cyan',
+      'O': 'yellow',
+      'T': 'purple',
+      'S': 'green',
+      'Z': 'red',
+      'J': 'blue',
+      'L': 'orange'
+    };
+
+    for (const blockType in blockColors) 
+    {
+      console.log(blockType)
+      console.log(blockColors[blockType])
+      changeBlockColor(blockType, blockColors[blockType])
+    }
+    backgroundColor = '#808080'
+
+    changeBackgroundColor("body", backgroundColor) 
+    changeBackgroundColor("gameScreen", backgroundColor)
+
+    gameScreenColor = '#000000'
+    
+    changeBackgroundColor("hold", gameScreenColor)
+    changeBackgroundColor("game", gameScreenColor)
+    changeBackgroundColor("next", gameScreenColor)
+
+
+    // Convert object to string and save to local storage
+    const colorsString = JSON.stringify(blockColors);
+    localStorage.setItem('blockColors', colorsString);
+    const backgroundString = JSON.stringify(backgroundColor);
+    localStorage.setItem('backgroundColor', backgroundString);
+    const gameScreenString = JSON.stringify(gameScreenColor);
+    localStorage.setItem('gameScreenColor', gameScreenString);
+
+    
+  }
 
   function changeBlockColor(blockType, newColor) 
   {
-    const blockColor = colors[blockType];
+    if(newColor)
+    {
+      const blockColor = colors[blockType];
+
+      colors[blockType] = newColor;
+   
   
-    if (validColors.includes(newColor)) 
-    {
-      colors[blockType] = newColor;
-    } 
-    else if (/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/.test(newColor)) 
-    {
-      colors[blockType] = newColor;
-    } 
-    else if (/^(rgb|rgba)\([ ]*\d{1,3}[ ]*,[ ]*\d{1,3}[ ]*,[ ]*\d{1,3}[ ]*(,[ ]*\d{1,3}[ ]*)?\)$/.test(newColor)) 
-    {
-      colors[blockType] = newColor;
-    } 
-    else 
-    {
-      console.error(`Invalid color: ${newColor}`);
-      return;
+      console.log(`Changed color of ${blockType} block from ${blockColor} to ${colors[blockType]}`);
     }
-  
-    console.log(`Changed color of ${blockType} block from ${blockColor} to ${colors[blockType]}`);
   }
   //changeColor("O", "Brown");
 
@@ -528,7 +573,7 @@ function getRandomInt2(min, max) {
     const element = document.getElementById(id);
     element.style.backgroundColor = color;
   }
-  // changeBackgroundColor("gameScreen", "Blue")
+  // changeBackgroundColor("gameScreen", "#ff0000")
   // changeBackgroundColor("body", "Red")
   //changeBackgroundColor("game", "gray")
 
@@ -562,7 +607,7 @@ function getRandomInt2(min, max) {
   //redBlue()
   
   let count = 0;
-  let tetromino = getNextTetromino();
+  let tetromino = null;
   let rAF = null;  // keep track of the animation frame so we can cancel it
   let gameOver = false;
 
@@ -573,8 +618,8 @@ function getRandomInt2(min, max) {
     if(!paused && !gameOver)
     {
       // Change the button's text
-      document.getElementById("tetrisPlayButton").innerHTML = "Pause!";
-      document.getElementById("tetrisPlayButton").onclick = pauseClicked;
+      // document.getElementById("tetrisPlayButton").innerHTML = "Pause!";
+      // document.getElementById("tetrisPlayButton").onclick = pauseClicked;
 
       rAF = requestAnimationFrame(loop);
       context.clearRect(0,0,canvas.width,canvas.height);
@@ -629,10 +674,24 @@ function getRandomInt2(min, max) {
     e.preventDefault(); // add this line to prevent default behavior
 
     if (gameOver) return;
-  
+
+    move = e.which
+
+    if(move === 65)
+      move = 37;
+
+    if(move === 68)
+      move = 39;
+
+    if(move === 87)
+      move = 38;
+
+    if(move === 83)
+      move = 40;
+    
     // left and right arrow keys (move)
-    if (e.which === 37 || e.which === 39) {
-      const col = e.which === 37
+    if (move === 37 || move === 39) {
+      const col = move === 37
         ? tetromino.col - 1
         : tetromino.col + 1;
   
@@ -642,7 +701,7 @@ function getRandomInt2(min, max) {
     }
   
     // up arrow key (rotate)
-    if (e.which === 38) {
+    if (move === 38) {
       const matrix = rotate(tetromino.matrix);
       if (isValidMove(matrix, tetromino.row, tetromino.col)) {
         tetromino.matrix = matrix;
@@ -650,7 +709,7 @@ function getRandomInt2(min, max) {
     }
   
     // down arrow key (drop)
-    if(e.which === 40) {
+    if(move === 40) {
       score+=1;
       updateScore(score);
       const row = tetromino.row + 1;
@@ -666,7 +725,7 @@ function getRandomInt2(min, max) {
     }
 
     // Spacebar
-    if(e.which === 32) {
+    if(move === 32) {
       hold()
     }
 
@@ -675,10 +734,28 @@ function getRandomInt2(min, max) {
   function pDown(e) 
   {
     if(e.which === 80) {
+      const modal = document.getElementById('ms-modal');
       if(paused)
-        resume()
+      {
+        closeModal(modal)
+      }
       else
-        pauseClicked()
+      {
+        openModal(modal);
+      }
+    }
+  }
+
+  function pausedControl(e)
+  {
+    if(e.which === 82) 
+    {
+      location.reload();
+    }
+    if(e.which === 77 || e.which === 81) 
+    {
+      resetdefault()
+      location.href = "../UI/game-select.html";
     }
   }
 
@@ -687,8 +764,8 @@ function getRandomInt2(min, max) {
 
 
   //Starts as play button
-  document.getElementById("tetrisPlayButton").innerHTML = "Play!";
-  document.getElementById("tetrisPlayButton").onclick = resume;
+  // document.getElementById("tetrisPlayButton").innerHTML = "Play!";
+  // document.getElementById("tetrisPlayButton").onclick = resume;
 
   function pauseClicked() {
     console.log("Hi pause was pressed!")
@@ -700,8 +777,8 @@ function getRandomInt2(min, max) {
     body.classList.add('hide');
 
 
-    document.getElementById("tetrisPlayButton").innerHTML = "Play!";
-    document.getElementById("tetrisPlayButton").onclick = resume;
+    // document.getElementById("tetrisPlayButton").innerHTML = "Play!";
+    // document.getElementById("tetrisPlayButton").onclick = resume;
   }
 
   function resume() {
@@ -742,14 +819,14 @@ function getRandomInt2(min, max) {
 
   restartButton.addEventListener('click', function() {location.reload();})
 
-  menuButton.addEventListener('click', function() {location.href = "../UI/game-select.html";})
+  menuButton.addEventListener('click', function() {resetdefault(); location.href = "../UI/game-select.html";})
   
   function openModal(modal) {
     if (modal == null) return;
     pauseClicked();
     modal.classList.add('active');
     overlay.classList.add('active');
-    
+    document.addEventListener('keydown', pausedControl);
   }
   
   function closeModal(modal) {
@@ -757,6 +834,7 @@ function getRandomInt2(min, max) {
     resume();
     modal.classList.remove('active');
     overlay.classList.remove('active');
+    document.removeEventListener('keydown', pausedControl);
   }
 
 
@@ -777,17 +855,27 @@ function getRandomInt2(min, max) {
   restartGameButton.addEventListener('click', function() {location.reload();});
 
   // Menu event
-  goMenuButton.addEventListener('click', function() {location.href = "../UI/game-select.html";});
+  goMenuButton.addEventListener('click', function() {resetdefault(); location.href = "../UI/game-select.html";});
 
   function openGameOverModal() {
+    document.addEventListener('keydown', pausedControl);
     //console.log(score);
     if(isHighScore())
     {
+      document.removeEventListener('keydown', pausedControl);
       restartGameButton.disabled = true;
       goMenuButton.disabled = true;
+      const highScoreElement = document.getElementById('highScore');
+      highScoreElement.textContent = "HIGH SCORE!!";
+      const highScoreMsgElement = document.getElementById('highScoremsg');
+      highScoreMsgElement.textContent = "Enter your name so we can record history!";
+      const recordScoreElement = document.getElementById('recordScore');
+      recordScoreElement.style.display = 'none';
     }
     if(isLowScore())
     {
+      const recordScoreElement = document.getElementById('recordScore');
+      recordScoreElement.style.display = 'none';
       submitScore.disabled = true;
     }
     finalScoreSpan.textContent = score;
@@ -872,4 +960,5 @@ function getRandomInt2(min, max) {
 
     return false;
   }
+
 

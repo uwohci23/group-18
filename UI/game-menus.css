@@ -53,6 +53,24 @@ body {
     background-color: #411dc44b
 }
 
+.settings-button {
+  background-image: url("../Media/settings_button.png");
+  background-size: cover;
+  background-color: transparent;
+  width: 5em;
+  height: 5em;
+  float: left;
+  border: none;
+  border-radius: 1em;
+  position: fixed;
+  top: 0.5em;
+  right: 0.5em;
+}
+
+.settings-button:hover{
+  background-color: #411dc44b
+}
+
 .difficulty-radio-buttons {
     display: flex;
     flex-direction: row;
@@ -135,10 +153,6 @@ input[type="radio"]:checked + .checkmark {
   background-color: #f8ac3a;
 }
 
-.tetris-body {
-
-}
-
 .instructions-modal {
   display: none;
   position: fixed;
@@ -186,4 +200,82 @@ input[type="radio"]:checked + .checkmark {
 #overlay.active {
   opacity: 1;
   pointer-events: all;
+}
+
+.settings-modal {
+  display: none;
+  height: auto;
+  max-height: 75%;
+  overflow: scroll;
+  margin: 0 auto;
+  width: 60%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 800px;
+  background-color: white;
+  border-radius: 12px;
+  padding: 24px;
+  font-size: 15px;
+}
+
+.settings-modal.active {
+  display: grid;
+}
+
+.settings-close {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  top: 5px;
+  right: 5px;
+  border-radius: 50%;
+  border: none;
+  background-color: #f1c40f;
+}
+
+#settings-modal h1 {
+  text-align: center;
+}
+
+#settings-modal #customize-form {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 20px 0;
+  padding: 20px;
+}
+
+#settings-modal label {
+  display: inline-block;
+  font-size: 16px; /* Set font size */
+  margin-bottom: 10px;
+  font-weight: bold;
+  text-align: left;
+  color: black;
+  background-color: white;
+  width: auto;
+  height: auto;
+  border-radius: 2px;
+  padding: 1%;
+  cursor: pointer;
+  box-shadow: none;
+}
+.block-colors label::first-letter {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+#settings-modal select {
+  margin-bottom: 20px;
+  background-color: white; /* Set background color */
+  border: 1px solid #ccc; /* Add border */
+  border-radius: 4px; /* Add border radius */
+  color: #555; /* Set text color */
+  font-size: 16px; /* Set font size */
+  padding: 8px 10px; /* Add padding */
+  width: 100%; /* Set width */
+  box-sizing: border-box; /* Include border in width */
 }

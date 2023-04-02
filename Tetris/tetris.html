@@ -15,26 +15,29 @@
       | |
     </button>
     <div class="pause-modal" id="ms-modal">
-        <button data-modal-close class="pause-button">Resume</button>
-        <button class="pause-button" id="restart">Restart</button>
-        <button class="pause-button" id="menu">Menu</button>
+        <button data-modal-close class="pause-button">Resume (p)</button>
+        <button class="pause-button" id="restart">Restart (r)</button>
+        <button class="pause-button" id="menu">Menu (m)</button>
     </div>
 
     <!--Game Over Stuff-->
     <div class="game-over-modal" id="game-over-modal">
-      <h2>Game Over</h2>
+      
+      <h2>Game Over</h2><br>
+      <h2 id="highScore"></h2>
+      <h3 id="highScoremsg"></h3>
+      <h3 id="recordScore">Enter your name so you can be added to the leaderboard!</h3>
       <p>Your Score: <span id="final-score"></span></p>
       <label for="player-name">Name:</label>
       <input type="text" id="player-name"/>
       <button class="game-over-button" id="submit-button">Submit</button>
-      <button class="game-over-button" id="restart-game">Restart</button>
-      <button class="game-over-button" id="go-menu">Menu</button>
+      <button class="game-over-button" id="restart-game">Restart (r)</button>
+      <button class="game-over-button" id="go-menu">Menu (m)</button>
     </div> 
 
     <div id="overlay"></div>
     <div id="gameScreen">
-      <div>
-        <button id="tetrisPlayButton" onclick="loop()">Play!</button>
+      <div id="lhs">
         <div id="holdingDiv">Holding: </div>
         <canvas id="hold"></canvas>
       </div>
