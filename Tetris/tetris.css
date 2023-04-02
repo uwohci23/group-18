@@ -287,3 +287,19 @@ pointer-events: all;
   color: white;
   z-index: 1000;
 }
+
+#HighestScore {
+  display: inline-block;
+  position: fixed;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px;
+  background-color: black;
+  color: white;
+  z-index: 1000;
+  font-weight: bolder;
+  font-family: math;
+  font-size: 2.5vh;
+  color:red;
+}
