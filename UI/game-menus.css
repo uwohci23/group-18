@@ -172,7 +172,10 @@ display: grid;
 }
 
 .instructions-text {
-font-size: 25px;
+  font-size: 25px;
+  font-size: 20px;
+  text-align: center;
+  display: grid;
 }
 
 .instructions-close {
@@ -184,6 +187,34 @@ right: 5px;
 border-radius: 50%;
 border: none;
 background-color: #f1c40f;
+}
+
+.game-controls {
+  display: flex;
+  font-size: 15px;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-controls p {
+  margin-right: 11px;
+}
+
+.controls-icon {
+  padding-right: 10px;
+  padding-bottom: 5px;
+}
+
+.instructions-speech {
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  bottom: 10px;
+  right: 10px;
+  border-radius: 50%;
+  border: none;
+  background-color: #f1c40f;
+  font-size: 30px;
 }
 
 #overlay {
