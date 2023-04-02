@@ -10,3 +10,21 @@ canvas {
 button:hover{
     background: #4f7259;
 }
+
+.confirmation-panel {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: 200ms ease-in-out;
+    border: 1px solid black;
+    border-radius: 10px;
+    z-index: 1000;
+    background-color: white;
+    width: 220px;
+    height: 80px;
+    max-width: 80%;
+    display: none;
+    align-items: center;
+    justify-content: space-around;
+}

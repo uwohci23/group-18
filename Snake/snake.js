@@ -2,7 +2,7 @@ import { openGameOverModal } from '../UI/endmenu.js';saveHighScore
 import { saveHighScore, isHighScore} from "../UI/highscores.js";
 
 window.onload = function() {
-    startGame()
+    startGame();
 };
 
 document.getElementById('submit-button').addEventListener('click', () => {
@@ -198,16 +198,16 @@ function draw(){
 
 function direction(event){
     let key = event.keyCode;
-    if( key == 37 && d != "RIGHT"){
+    if( key == 37 || key == 65 && d != "RIGHT" ){
         left.play();
         d = "LEFT";
-    }else if(key == 38 && d != "DOWN"){
+    }else if(key == 38 || key == 87 && d != "DOWN"){
         d = "UP";
         up.play();
-    }else if(key == 39 && d != "LEFT"){
+    }else if(key == 39 || key == 68 && d != "LEFT"){
         d = "RIGHT";
         right.play();
-    }else if(key == 40 && d != "UP"){
+    }else if(key == 40 || key == 83 && d != "UP"){
         d = "DOWN";
         down.play();
     }
@@ -223,3 +223,79 @@ function collision(newhead,snake){
     return false;
 }
 
+// PUASE STUFF
+//Add Confirmation after Choosing to Restart or Go to Menu
+const openModalButtons = document.getElementById('pause-button'); //pause
+const closeModalButtons = document.querySelectorAll('[data-modal-close]'); //resume
+const restartButton = document.getElementById('restart'); //restart
+const menuButton = document.getElementById('menu'); //menu
+const overlay = document.getElementById('overlay'); //screen  
+const modal = document.querySelector(openModalButtons.dataset.modalTarget);
+
+const confirmationPanel = document.querySelector('.confirmation-panel');
+const confirmBtn = document.querySelector('.confirm-btn');
+const cancelBtn = document.querySelector('.cancel-btn');
+//console.log(modal)
+
+//Open Pause Menu
+openModalButtons.addEventListener('click', function() {openModal(modal); } );
+// closeModalButtons.addEventListener('click', function() {const modal = closeModalButtons.closest('.pause-modal'); closeModal(modal);} );
+
+//Close Pause Menu to continue game
+closeModalButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const modal = button.closest('.pause-modal');
+    closeModal(modal);
+  })
+})
+restartButton.addEventListener('click', function() {
+    confirmationPanel.style.display = 'flex';
+    document.querySelector(".pause-modal").classList.remove('active');
+    confirmationPanel.classList.add('restart-cmd');
+}) 
+
+menuButton.addEventListener('click', function() {
+    confirmationPanel.style.display = 'flex';
+    document.querySelector(".pause-modal").classList.remove('active');
+
+})
+
+// Add event listener to confirm button
+confirmBtn.addEventListener('click', function() {
+    // Code to confirm goes here
+    if(confirmationPanel.classList.contains('restart-cmd')) {
+        location.reload();
+        confirmationPanel.classList.remove('restart-cmd');
+    }else{
+        location.href = "../UI/game-select.html";
+    }
+    // Hide the confirmation panel
+    confirmationPanel.style.display = 'none';
+  });
+  
+  // Add event listener to cancel button
+  cancelBtn.addEventListener('click', function() {
+    // Code to cancel goes here
+    confirmationPanel.classList.remove('restart-cmd');
+    if(confirmationPanel.classList.contains('end'))
+        document.querySelector(".game-over-modal").classList.add('active');
+    else
+        document.querySelector(".pause-modal").classList.add('active');
+    // Hide the confirmation panel
+    confirmationPanel.style.display = 'none';
+  });
+
+function openModal(modal) {
+  if (modal == null) return;
+  togglePause();
+  modal.classList.add('active');
+  overlay.classList.add('active');
+  
+}
+
+function closeModal(modal) {
+  if (modal == null) return;
+  togglePause();
+  modal.classList.remove('active');
+  overlay.classList.remove('active');
+}

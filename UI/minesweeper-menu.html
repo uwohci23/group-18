@@ -31,11 +31,25 @@
       <button class="play-button">Play⏵</button>
     </form>
     <div class="instructions-modal" id="instructions-modal">
+      <button class="instructions-speech" id="instructions-speech">🔊</button>
       <button class="instructions-close" id="instructions-close">X</button>
       <div class="instructions-text">
-        Minesweeper is single-player logic-based computer game played on rectangular board whose object is to 
-        locate a predetermined number of randomly-placed "mines" in the shortest possible time by clicking on 
-        "safe" squares while avoiding the squares with mines. If the player clicks on a mine, the game ends.
+        <b id="instructions-desc">
+          Locate all of the mines in the shortest possible time by clicking on safe squares. 
+          If the player clicks on a mine, the game ends.<hr>
+        </b>
+        <div class="game-controls">
+          <img class="controls-icon" src="../Media/ms-number.png" width="40" height="40" alt="Number tile">
+          Numbers represent adjacent bombs.
+        </div>
+        <div class="game-controls">
+          <img class="controls-icon" src="../Media/left-click.png" width="50" height="50" alt="Left click">
+          Reveal a tile you think is safe.
+        </div>
+        <div class="game-controls">
+          <img class="controls-icon" src="../Media/right-click.png" width="50" height="50" alt="Right click">
+          Flag a tile you think is a bomb.
+        </div>
       </div>
     </div>
     <div id="overlay"></div>

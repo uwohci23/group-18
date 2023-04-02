@@ -31,11 +31,19 @@
       <button class="play-button">Play⏵</button>
     </form>
     <div class="instructions-modal" id="instructions-modal">
+      <button class="instructions-speech" id="instructions-speech">🔊</button>
       <button class="instructions-close" id="instructions-close">X</button>
       <div class="instructions-text">
-        The player controls a long, thin creature, resembling a snake, which roams around on a bordered plane, 
-        picking up food (or some other item), trying to avoid hitting its own tail or the edges of the playing 
-        area. Each time the snake eats a piece of food, its tail grows longer, making the game increasingly difficult.
+        <b id="instructions-desc">
+          Eat as many apples as you can while avoiding your tail and the game borders. 
+          Be careful though, each apple you eat increases the length of the snake!<hr>
+        </b>
+        <div class="game-controls">
+          <img class="controls-icon" src="../Media/arrows.png" width="60" height="60" alt="Arrow keys">
+          <p>OR</p>
+          <img class="controls-icon" src="../Media/wasd.png" width="60" height="60" alt="Arrow keys">
+          Move the snake.
+        </div>
       </div>
     </div>
     <div id="overlay"></div>

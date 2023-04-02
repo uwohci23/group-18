@@ -3,15 +3,21 @@ const restartGameButton = document.getElementById('restart-game');
 const goMenuButton = document.getElementById('go-menu');
 const playerNameInput = document.getElementById('player-name');
 const finalScoreSpan = document.getElementById('final-score');
+const confirmationPanel = document.querySelector('.confirmation-panel');
 
 // Restart event
 restartGameButton.addEventListener('click', () => {
-  location.reload();
+  confirmationPanel.style.display = 'flex';
+  gameOverModal.classList.remove('active');
+  confirmationPanel.classList.add('restart-cmd');
+  confirmationPanel.classList.add('end');
 });
 
 // Menu event
 goMenuButton.addEventListener('click', () => {
-  location.href = "../UI/game-select.html";
+  confirmationPanel.style.display = 'flex';
+  gameOverModal.classList.remove('active');
+  confirmationPanel.classList.add('end');
 });
 
 export function openGameOverModal(score) {

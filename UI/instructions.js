@@ -1,6 +1,8 @@
 const instructionsModal = document.getElementById('instructions-modal');
 const openButton = document.getElementById('instructions-open');
 const closeButton = document.getElementById('instructions-close');
+const speechButton = document.getElementById('instructions-speech');
+const gameDescription = document.getElementById('instructions-desc');
 
 // Open event
 openButton.addEventListener('click', () => {
@@ -11,6 +13,7 @@ openButton.addEventListener('click', () => {
 closeButton.addEventListener('click', () => {
   closeInstructionsModal();
 });
+
 
 export function openInstructionsModal() {
   instructionsModal.classList.add('active');
