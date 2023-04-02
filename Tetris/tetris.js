@@ -15,6 +15,7 @@ holding = false;
 switched = false;
 clear2 = true;
 let start = 0;
+const highScoreDisplay = document.getElementById('HighestScore');
 
 document.addEventListener('DOMContentLoaded', () => {
   console.log(colors);
@@ -50,9 +51,22 @@ document.addEventListener('DOMContentLoaded', () => {
       changeBackgroundColor("hold", gameScreenColor)
       changeBackgroundColor("game", gameScreenColor)
       changeBackgroundColor("next", gameScreenColor)
-    }
+    }    
 
   }
+  const highScoreString = localStorage.getItem(HIGH_SCORES);
+  const highScores = JSON.parse(highScoreString) 
+
+  var highestScore = 0;
+  if(highScores)
+  {
+    var highScoresMedium = highScores["medium_scores"];
+    highestScore = highScoresMedium[0]?.score ?? 0;
+  }
+  
+
+
+  highScoreDisplay.textContent = `Highest Score: ${highestScore}`;
 
   console.log(colors)
   tetromino = getNextTetromino();
@@ -929,11 +943,12 @@ function getRandomInt2(min, max) {
   goMenuButton.addEventListener('click', function() 
   {
     confirmation.style.display = 'inline-block';
-    document.querySelector(".pause-modal").classList.remove('active')
+    confirmMsgElement.textContent = "Are you sure you would like to exit the current game?";
+    confirmation.classList.add('end');
+    document.querySelector(".game-over-modal").classList.remove('active')
   });
 
   function openGameOverModal() {
-    document.addEventListener('keydown', pausedControl);
     //console.log(score);
     if(isHighScore())
     {
