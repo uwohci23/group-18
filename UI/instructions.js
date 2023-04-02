@@ -14,12 +14,6 @@ closeButton.addEventListener('click', () => {
   closeInstructionsModal();
 });
 
-// Speech event
-speechButton.addEventListener('click', e => {
-  e.preventDefault();
-  const utterance = new SpeechSynthesisUtterance(gameDescription.textContent);
-  speechSynthesis.speak(utterance);
-});
 
 export function openInstructionsModal() {
   instructionsModal.classList.add('active');

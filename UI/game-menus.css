@@ -55,6 +55,24 @@ body {
     background-color: #411dc44b
 }
 
+.settings-button {
+  background-image: url("../Media/settings_button.png");
+  background-size: cover;
+  background-color: transparent;
+  width: 5em;
+  height: 5em;
+  float: left;
+  border: none;
+  border-radius: 1em;
+  position: fixed;
+  top: 0.5em;
+  right: 0.5em;
+}
+
+.settings-button:hover{
+  background-color: #411dc44b
+}
+
 .difficulty-radio-buttons {
     display: flex;
     flex-direction: row;
@@ -198,20 +216,4 @@ input[type="radio"]:checked + .checkmark {
 #overlay.active {
   opacity: 1;
   pointer-events: all;
-}
-
-.game-controls {
-  display: flex;
-  font-size: 15px;
-  justify-content: center;
-  align-items: center;
-}
-
-.game-controls p {
-  margin-right: 11px;
-}
-
-.controls-icon {
-  padding-right: 10px;
-  padding-bottom: 5px;
 }

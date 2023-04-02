@@ -1,0 +1,30 @@
+body {
+    background-color: #f2f2f2;
+    font-family: Arial, sans-serif;
+  }
+  #container {
+    margin: 0 auto;
+    width: 80%;
+  }
+  h1 {
+    text-align: center;
+  }
+  #customize-form {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+    padding: 20px;
+  }
+  label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  select {
+    margin-bottom: 20px;
+  }
+  /* .block-input {
+    display: none;
+  } */
