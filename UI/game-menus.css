@@ -207,6 +207,10 @@ input[type="radio"]:checked + .checkmark {
   align-items: center;
 }
 
+.game-controls p {
+  margin-right: 11px;
+}
+
 .controls-icon {
   padding-right: 10px;
   padding-bottom: 5px;
