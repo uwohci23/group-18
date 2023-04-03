@@ -723,7 +723,7 @@ function getRandomInt2(min, max) {
   
     // down arrow key (drop)
     if(move === 40) {
-      score+=1;
+      score+=2;
       updateScore(score);
       const row = tetromino.row + 1;
   
