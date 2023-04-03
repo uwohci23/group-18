@@ -23,6 +23,13 @@ body {
   margin: 5px
 }
 
+.highscore {
+  color: #CCC;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+}
+
 .subtext {
   color: #CCC;
   font-size: 1rem;
@@ -91,4 +98,15 @@ p{
   display: none;
   align-items: center;
   justify-content: space-around;
+}
+
+.game-over-button[disabled] {
+  display: inline-block;
+  margin: 8px;
+  padding: 8px 16px;
+  background-color: #c09f1a;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }

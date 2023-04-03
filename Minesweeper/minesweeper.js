@@ -1,14 +1,18 @@
 import { TILE_STATUS, createBoard, flagTile, revealTile, checkWin, checkLose } from "./game.js"
 import { stop, getTime, formatTime} from "./timer.js"
 import { openGameOverModal } from '../UI/endmenu.js';
-import { saveHighScore, isFastScore} from "../UI/highscores.js";
+import { saveHighScore, isFastScore, isFastestScore} from "../UI/highscores.js";
 
 //Event listener for submitting high score
 document.getElementById('submit-button').addEventListener('click', () => {
   const score = document.querySelector("#final-score").textContent;
   const name = document.querySelector("#player-name").value;
+  if(name.trim() == ""){
+    alert("Please use the text area to enter a name to go with your score!");
+    return;
+  }
   saveHighScore("Minesweeper", difficulty, getTime(), name);
-  document.querySelector("#submit-button").style.display = "none";
+  document.querySelector("#submit-button").disabled = true;
 });
 
 // Retrieving difficulty and adjusting board parameters
@@ -37,6 +41,16 @@ switch (difficulty) {
     break
 }
 
+// Set high score
+const highScore = document.querySelector('.highscore');
+let top_scores = JSON.parse(localStorage.getItem(`Minesweeper top scores`));
+if (top_scores[`${difficulty.toLowerCase()}_scores`][0]) {
+    highScore.textContent = "High Score: " + formatTime(top_scores[`${difficulty.toLowerCase()}_scores`][0].score);
+} else {
+    highScore.textContent = "High Score: 0"; 
+};
+
+// Create board
 const board = createBoard(boardHeight, boardWidth, numMines)
 const boardElement = document.querySelector('.board')
 const minesLeftText = document.querySelector('[data-mine-count]')
@@ -74,6 +88,10 @@ function checkGameEnd() {
 
   if (win) {
     messageText.textContent = "You Win!"
+    if(isFastestScore(getTime(), "Minesweeper", difficulty)){
+      document.querySelector("#restart-game").disabled = true;
+      document.querySelector("#go-menu").disabled = true;
+    }
   }
   else if (lose) {
     document.querySelector(".game-over-modal label").style.display = "none";
@@ -93,12 +111,12 @@ function checkGameEnd() {
     boardElement.addEventListener('contextmenu', stopProp, { capture: true })
     stop()
     //If not a high score hide high score form
-    console.log(isFastScore(getTime(), "Minesweeper", difficulty));
     if(!isFastScore(getTime(), "Minesweeper", difficulty)){
       document.querySelector(".game-over-modal label").style.display = "none";
       document.querySelector(".game-over-modal input").style.display = "none";
       document.querySelector("#submit-button").style.display = "none";
     }
+    
     openGameOverModal(formatTime(getTime()));
   }
 }
