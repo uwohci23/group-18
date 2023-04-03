@@ -522,9 +522,16 @@ function getRandomInt2(min, max) {
   function resetdefault()
   {
     const reset = localStorage.getItem("resetDefaults");
-    console.log(reset);
-    if(reset == "true")
+    if(reset)
+    {
+      console.log(reset);
+      if(reset == "true")
+        defaultColors()
+    }
+    else
+    {
       defaultColors()
+    }
   }
   function defaultColors()
   {
