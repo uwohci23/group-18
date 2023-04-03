@@ -951,6 +951,7 @@ function getRandomInt2(min, max) {
     confirmation.style.display = 'inline-block';
     confirmMsgElement.textContent = "Are you sure you would like to exit the current game?";
     confirmation.classList.add('end');
+    document.addEventListener('keydown', MenuEndControl)
     document.querySelector(".game-over-modal").classList.remove('active')
   });
 
@@ -1015,7 +1016,6 @@ function getRandomInt2(min, max) {
     setTimeout(function() {
       notification.style.display = "none";
     }, 2000);
-    
 
     var highScoresEasy = highScores["easy_scores"];
 
@@ -1097,7 +1097,8 @@ function getRandomInt2(min, max) {
     confirmation.classList.remove('restart-cmd');
     if(confirmation.classList.contains('end')) 
     {
-      document.querySelector(".game-over-modal").classList.add('active');
+        document.removeEventListener('keydown', MenuEndControl)
+        document.querySelector(".game-over-modal").classList.add('active');
     }
     else
     {
