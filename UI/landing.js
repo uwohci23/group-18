@@ -33,7 +33,7 @@ function fall(brick) {
     setInterval(() => {
         position += 3; // speed of falling
         brick.style.top = `${position}px`;
-        if (position+74 >= window.innerHeight) {
+        if (position+84 >= window.innerHeight) {
             position = 0;
             brick.style.top = '0';
         }
