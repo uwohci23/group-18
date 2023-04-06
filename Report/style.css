@@ -67,4 +67,5 @@ section {
 .design-principle {
   padding: 50px;
   border: 1px solid #666;
+  min-width: 952px;
 }
