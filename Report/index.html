@@ -10,7 +10,19 @@
 </head>
 <body>
 
-  <section>
+  <nav>
+    <div class="nav-container">
+      <ul>
+        <li class="overview"><a href="#overview">Overview</a></li>
+        <li class="map"><a href="#map">Map</a></li>
+        <li class="design"><a href="#design">Design</a></li>
+        <li class="evaluation"><a href="#evaluation">Evaluation</a></li>
+        <li class="improvements"><a href="#improvements">Improvements</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section id="intro">
     <div class="hidden">
       <h1>4474 Redesign - Arcade System</h1>
       <p>Group 18: Theodore Forcier, Rahul Jadgish, Michael Dias, Kashawn Brown</p>
@@ -18,21 +30,44 @@
     </div>
   </section>
 
-  <section>
+  <section id="overview">
     <div class="hidden">
       <h2>Overview</h2>
       <div class="content">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
-        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse 
-        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat 
-        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        For this project we decided to redesign an offline arcade system which was previously developed by one of our group members.
+        Our goal was to improve upon the system, publish it online and implement the HCI systems and designs we learned to create an
+        overall better user experience. The previous system was an offline application with very little interactivity, no navigation 
+        and static buttons that took the user straight to the games without any instructions or accessibility options. The arcade 
+        comprised of 3 classic games - Snake, Minesweeper and Tetris all of which were made up of older graphic elements which made 
+        for a dull and unappealing aesthetic design.
+
+        In our redesign we decided to emphasize the overarching arcade metaphor throughout the system to give users an authentic and
+        interactive gaming experience. Among many of the redesigns chief among those would be updating the visuals and graphics for 
+        a more minimalist and aesthetic design and building landing pages, menus and modals for greater functionality to improve 
+        accessibility and control and provide consistency across the system. The system was created through an iterative process of 
+        development and interaction design, with group members and peers giving feedback as users, and built using CSS, HTML and 
+        JavaScript.
+
+        Within each of the games our redesign now provides users with a landing page with customizability and accessibility options 
+        to give users the means to choose how they would like to interact with the system. Our system supports these changes by 
+        offering 3 different difficulty settings (Easy, Medium, Hard) to alter the game mechanics, varied input for greater control 
+        (conventional arrows and ‘WASD’ keys) and instructions that are delivered with audio and visual cues to promote accessibility.
+        The landing pages and modals (in-game, pause-game and end-game)were carefully curated and designed to maintain the uniformity
+        across the system and use principles like constraints, confirmation and feedback to minimize any user error. The icons used for 
+        navigation adhere to the semiotics principle and thus also promotes positive transfer for veteran users of arcade and other 
+        gaming systems.
+
+        The idea of an arcade metaphor is deeply rooted across the entire system right from the visuals from the main landing page, 
+        the sound track on the homepage to the displays within the games. Lastly, the addition of a leaderboard function further 
+        reinforces the arcade metaphor because much like traditional arcades it keeps track of the top 10 highscores for each of the
+        games at every difficulty level and gives users a score to beat. Working on this project allowed us to apply the theory we 
+        learned in class and demonstrated that if applied well, design principles truly allow for a more seamless and smooth user 
+        experience.
       </div>
     </div>
   </section>
 
-  <section>
+  <section id="map">
     <div class="hidden">
       <h2>Navigational Map</h2>
       <div class="content">
@@ -46,19 +81,19 @@
   </div>
   </section>
 
-  <section>
+  <section id="design">
     <div class="hidden">
       <h2>Design Principles</h2>
       <div class="content">
         <div class="design-principle-grid">
           <div class="btn-group">
-            <button>[Design Principle 1]</button>
-            <button>[Design Principle 2]</button>
-            <button>[Design Principle 3]</button>
-            <button>[Design Principle 4]</button>
-            <button>[Design Principle 5]</button>
-            <button>[Design Principle 6]</button>
-            <button>[Design Principle 7]</button>
+            <button onclick='loadHtml("design-principle", "principle1.html")'>Constraints</button>
+            <button onclick='loadHtml("design-principle", "principle2.html")'>[Design Principle 2]</button>
+            <button onclick='loadHtml("design-principle", "principle3.html")'>[Design Principle 3]</button>
+            <button onclick='loadHtml("design-principle", "principle4.html")'>[Design Principle 4]</button>
+            <button onclick='loadHtml("design-principle", "principle5.html")'>[Design Principle 5]</button>
+            <button onclick='loadHtml("design-principle", "principle6.html")'>[Design Principle 6]</button>
+            <button onclick='loadHtml("design-principle", "principle7.html")'>[Design Principle 7]</button>
             <button>[Design Principle 8]</button>
             <button>[Design Principle 9]</button>
             <button>[Design Principle 10]</button>
@@ -73,7 +108,7 @@
             <button>[Design Principle 19]</button>
             <button>[Design Principle 20]</button>
           </div>
-          <div class="design-principle">
+          <div id="design-principle" class="design-principle">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
             tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
             quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
@@ -86,8 +121,8 @@
   </div>
   </section>
 
-  <section>
-    <div class="hidden">
+  <section id="evaluation">
+    <div class="hidden" id="evaluation">
       <h2>Heuristic Evaluation</h2>
       <div class="content">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
@@ -100,9 +135,9 @@
     </div>
   </section>
 
-  <section>
+  <section id="improvements">
     <div class="hidden">
-    <h2>Improvemenets</h2>
+    <h2>Improvements</h2>
       <div class="content">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 

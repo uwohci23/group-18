@@ -17,6 +17,7 @@ document.getElementById('submit-button').addEventListener('click', () => {
 });
 
 const difficulty = localStorage.getItem('snake-difficulty')
+
 let gameSpeed;
 switch (difficulty) {
   case 'easy':
@@ -100,7 +101,12 @@ let d;
 // restart the game
 function startGame(){
     clearInterval(game);
-    let top_scores = JSON.parse(localStorage.getItem(`Snake top scores`));
+    let top_scores = JSON.parse(localStorage.getItem(`Snake top scores`)) ?? {
+        easy_scores: [],
+        medium_scores: [],
+        hard_scores: []
+    };
+
     if (top_scores[`${difficulty.toLowerCase()}_scores`][0]) {
         highscore = top_scores[`${difficulty.toLowerCase()}_scores`][0].score;
     } else {

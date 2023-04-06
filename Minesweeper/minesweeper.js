@@ -43,7 +43,12 @@ switch (difficulty) {
 
 // Set high score
 const highScore = document.querySelector('.highscore');
-let top_scores = JSON.parse(localStorage.getItem(`Minesweeper top scores`));
+let top_scores = JSON.parse(localStorage.getItem(`Minesweeper top scores`)) ?? {
+  easy_scores: [],
+  medium_scores: [],
+  hard_scores: []
+};
+
 if (top_scores[`${difficulty.toLowerCase()}_scores`][0]) {
     highScore.textContent = "High Score: " + formatTime(top_scores[`${difficulty.toLowerCase()}_scores`][0].score);
 } else {
