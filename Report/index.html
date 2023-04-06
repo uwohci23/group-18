@@ -33,21 +33,21 @@
   <section id="overview">
     <div class="hidden">
       <h2>Overview</h2>
-      <div class="content">
+      <div class="content"><p>
         For this project we decided to redesign an offline arcade system which was previously developed by one of our group members.
         Our goal was to improve upon the system, publish it online and implement the HCI systems and designs we learned to create an
         overall better user experience. The previous system was an offline application with very little interactivity, no navigation 
         and static buttons that took the user straight to the games without any instructions or accessibility options. The arcade 
         comprised of 3 classic games - Snake, Minesweeper and Tetris all of which were made up of older graphic elements which made 
-        for a dull and unappealing aesthetic design.
-
+        for a dull and unappealing aesthetic design.</p>
+        <p>
         In our redesign we decided to emphasize the overarching arcade metaphor throughout the system to give users an authentic and
         interactive gaming experience. Among many of the redesigns chief among those would be updating the visuals and graphics for 
         a more minimalist and aesthetic design and building landing pages, menus and modals for greater functionality to improve 
         accessibility and control and provide consistency across the system. The system was created through an iterative process of 
         development and interaction design, with group members and peers giving feedback as users, and built using CSS, HTML and 
-        JavaScript.
-
+        JavaScript.</p>
+        <p>
         Within each of the games our redesign now provides users with a landing page with customizability and accessibility options 
         to give users the means to choose how they would like to interact with the system. Our system supports these changes by 
         offering 3 different difficulty settings (Easy, Medium, Hard) to alter the game mechanics, varied input for greater control 
@@ -55,14 +55,14 @@
         The landing pages and modals (in-game, pause-game and end-game)were carefully curated and designed to maintain the uniformity
         across the system and use principles like constraints, confirmation and feedback to minimize any user error. The icons used for 
         navigation adhere to the semiotics principle and thus also promotes positive transfer for veteran users of arcade and other 
-        gaming systems.
-
+        gaming systems.</p>
+        <p>
         The idea of an arcade metaphor is deeply rooted across the entire system right from the visuals from the main landing page, 
         the sound track on the homepage to the displays within the games. Lastly, the addition of a leaderboard function further 
         reinforces the arcade metaphor because much like traditional arcades it keeps track of the top 10 highscores for each of the
         games at every difficulty level and gives users a score to beat. Working on this project allowed us to apply the theory we 
         learned in class and demonstrated that if applied well, design principles truly allow for a more seamless and smooth user 
-        experience.
+        experience.</p>
       </div>
     </div>
   </section>
@@ -87,11 +87,11 @@
       <div class="content">
         <div class="design-principle-grid">
           <div class="btn-group">
-            <button onclick='loadHtml("design-principle", "principle1.html")'>Constraints</button>
-            <button onclick='loadHtml("design-principle", "principle2.html")'>[Design Principle 2]</button>
-            <button onclick='loadHtml("design-principle", "principle3.html")'>[Design Principle 3]</button>
-            <button onclick='loadHtml("design-principle", "principle4.html")'>[Design Principle 4]</button>
-            <button onclick='loadHtml("design-principle", "principle5.html")'>[Design Principle 5]</button>
+            <button onclick='loadHtml("design-principle", "principle1.html")'>Confirmation</button>
+            <button onclick='loadHtml("design-principle", "principle2.html")'>Constraints</button>
+            <button onclick='loadHtml("design-principle", "principle3.html")'>Consistency</button>
+            <button onclick='loadHtml("design-principle", "principle4.html")'>Control</button>
+            <button onclick='loadHtml("design-principle", "principle5.html")'>Feedback</button>
             <button onclick='loadHtml("design-principle", "principle6.html")'>[Design Principle 6]</button>
             <button onclick='loadHtml("design-principle", "principle7.html")'>[Design Principle 7]</button>
             <button>[Design Principle 8]</button>
@@ -124,13 +124,61 @@
   <section id="evaluation">
     <div class="hidden" id="evaluation">
       <h2>Heuristic Evaluation</h2>
-      <div class="content">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
-        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse 
-        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat 
-        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      <div class="content"><p>
+        Visibility of System Status
+<ul>Navigation through menus is intuitive</ul>
+<ul>All buttons respond to hovering by changing color or an animation</ul>
+<ul>State of user choices is clear-</ul>
+Leaderboards highlight the button of the currently selected game and difficulty
+Game menus highlight the button indicating which difficulty the game will start with 
+Tetris customization display response message to tell the user that the block colors were updated</p>
+<p>
+Match Between the System and the Real World
+<ul>Back Button</ul>
+Being on the left side of the screen is similar to how you would turn a book back a page and is conventional
+<ul>Game Controls</ul>
+Movement direction corresponds with the physical layout of the keys 
+Uses standard keys for computer games
+Minesweeper controls follow that of the original microsoft game </p>
+<p>
+Consistency and Standards
+<ul>Internal consistency</ul>
+Layout and styling of game menus, pause menu, end of game menu are consistent across all pages
+<ul>External consistency </ul>
+Back buttons, game controls, 
+User control and Freedom
+The user can easily back out of accidental actions
+Navigate to menu from anywhere with back buttons and pause page
+ Error Prevention
+User mistakes 
+To avoid confusion our system only displays information and buttons relevant to the current page
+When the user gets a new record score, they must submit a name so that their score is saved
+Use confirm choice pop-up to reduce user slips 
+ 
+Recognition vs Recall in UI
+The main difference between recognition and recall is the number of cues being displayed. Recall has fewer cues than recognition and that is why it is more difficult and error prone.
+To mitigate the problem of recall we updated the graphics for each of the games while maintaining the recognizability to its legacy counterparts so that users can immediately identify to the system they are interacting with. 
+
+Flexibility and efficiency of Use
+Flexible processes allow users to pick their preferred means of interaction which in turn improves the overall efficiency in the system
+With this in mind certain updates were made within the game mechanisms
+Snake is conventionally played with the arrow keys across different devices but keeping in mind our system is developed for desktop/laptop users we also provide them the flexibility to control movement with ‘WASD’ keys.
+Similarly Tetris also provides its users the option or flexibility to play the entire game with traditional arrow keys or ‘WASD’ which ever the user may prefer.
+ 
+Aesthetic and Minimalist design
+The key component for a good minimalist design is a high signal-to-noise ratio.
+Every added element on screen competes for the user’s attention and memory
+Thus to incorporate an aesthetic and minimalist design we ensure that elements displayed on screen are
+Limited and focused on the current page 
+Displayed in an unclustered manner
+Adds functionality that is only needed by the user in that instance.
+Help and Documentation
+As designers we have strived to make the UI as intuitive as possible. However in spite of that it is possible at times users may need assistance while using the system.
+To accommodate for that we built into the system a landing page for each game so that users can familiarize themselves with the controls and difficulty settings before starting the games.
+Every game landing page has
+Instructions - That are specific to the game and come with audio and visual aids to improve accessibility for all potential users
+ Difficulty - So that users can personally alter the game mechanics to their own preference by selecting a difficulty level
+
       </div>
     </div>
   </section>
