@@ -33,10 +33,8 @@ const observer = new IntersectionObserver((entries) => {
 const hiddenElements = document.querySelectorAll('.hidden');
 hiddenElements.forEach((el) => observer.observe(el));
 
-// Design Principles Loading
+// HTML Loading
 function loadHtml(id, filename) {
-  console.log(`div id: ${id}, filename: ${filename}`);
-
   let xhttp;
   let element = document.getElementById(id);
   let file = filename;
@@ -49,8 +47,61 @@ function loadHtml(id, filename) {
         if (this.status == 404) {element.innerHTML = "<h1>PAGE NOT FOUND</h1>";}
       }
     }
-    xhttp.open("GET", `Principles/${file}`, true);
+    xhttp.open("GET", `${file}`, true);
     xhttp.send();
     return;
   }
+}
+
+// Principle Buttons
+var buttons = document.querySelectorAll('.principle-button');
+buttons.forEach(function(button) {
+  button.addEventListener('click', function() {
+    toggleClass(buttons, this);
+  });
+});
+function toggleClass(buttons, buttonToActivate) {
+  buttons.forEach(function(btn) {
+    btn.classList.remove('active');
+  });
+  buttonToActivate.classList.add('active');
+}
+
+// Heuristic Select Handling
+function handleSelect(selectedValue) {
+  switch (selectedValue) {
+    case "heuristic1":
+      loadHtml("heuristic-content", "Heuristics/heuristic1.html");
+      break;
+    case "heuristic2":
+      loadHtml("heuristic-content", "Heuristics/heuristic2.html");
+      break;
+    case "heuristic3":
+      loadHtml("heuristic-content", "Heuristics/heuristic3.html");
+      break;
+    case "heuristic4":
+      loadHtml("heuristic-content", "Heuristics/heuristic4.html");
+      break;
+    case "heuristic5":
+      loadHtml("heuristic-content", "Heuristics/heuristic5.html");
+      break;
+    case "heuristic6":
+      loadHtml("heuristic-content", "Heuristics/heuristic6.html");
+      break;
+    case "heuristic7":
+      loadHtml("heuristic-content", "Heuristics/heuristic7.html");
+      break;
+    case "heuristic8":
+      loadHtml("heuristic-content", "Heuristics/heuristic8.html");
+      break;
+    case "heuristic9":
+      loadHtml("heuristic-content", "Heuristics/heuristic9.html");
+      break;
+  }
+}
+
+// Initial Loading
+function initialLoad() {
+  loadHtml("design-principle", "Principles/principle1.html");
+  loadHtml("heuristic-content", "Heuristics/heuristic1.html");
 }
