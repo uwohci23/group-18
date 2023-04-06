@@ -57,6 +57,7 @@ section {
   display: grid;
   align-content: center;
   min-height: 100vh;
+  min-width: 800px;
 }
 
 .hidden {
@@ -85,26 +86,24 @@ section {
 
 .design-principle-grid {
   display: grid;
-  grid-template-columns: 1fr 3fr;
+  grid-template-columns: 1fr 4fr;
   grid-template-rows: 1fr;
   grid-column-gap: 25px;
+  align-items: center;
 }
 
 .btn-group button {
   background: none;
   border: 1px solid #666;
+  border-radius: 10px;
   color: #ffffff;
   padding: 10px 24px;
   cursor: pointer;
   width: 100%;
-  height: 25px;
   display: block;
-  font-size: 10px;
-  padding: 0px;
-}
-
-.btn-group button:not(:last-child) {
-  border-bottom: none;
+  font-size: 15px;
+  padding: 5px;
+  margin: 5px
 }
 
 .btn-group button:hover {
@@ -112,6 +111,65 @@ section {
 }
 
 .design-principle {
-  padding: 50px;
-  border: 1px solid #666;
+  padding: 30px;
+  border: 3px solid #666;
+  border-radius: 25px;
+  justify-content: center;
+}
+
+.design-principle .principle-title {
+  align-self: center;
+  font-size: 25px;
+}
+
+.design-principle .principle-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: space-between;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 5px;
+}
+
+.design-principle .principle-list {
+  flex-basis: calc(50% - 40px); /* Adjusted to account for padding */
+  padding: 20px;
+  display: flex;
+  align-items: center; /* Center vertically */
+}
+
+.design-principle .principle-list ul {
+  padding-left: 5px; /* Adjust the indentation as needed */
+  margin: 0;
+  list-style-type: circle; /* Change the list style as needed */
+}
+
+.design-principle .principle-list li {
+  padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.design-principle .principle-list b {
+  font-size: 20px;
+}
+
+.design-principle .principle-images {
+  flex-basis: calc(50% - 40px); /* Adjusted to account for padding */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: space-between;
+	text-align: center;
+}
+
+.design-principle .principle-images img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.design-principle .principle-images img:last-child {
+  margin-bottom: 0px;
 }
