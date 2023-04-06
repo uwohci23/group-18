@@ -24,9 +24,9 @@
 
   <section id="intro">
     <div class="hidden">
-      <h1>4474 Redesign - Arcade System</h1>
-      <p>Group 18: Theodore Forcier, Rahul Jadgish, Michael Dias, Kashawn Brown</p>
-      <a href="https://github.com/uwohci23/group-18">GitHub</a>
+      <h1 style="font-size: 3em;">4474 Redesign - Arcade System</h1>
+      <p style="font-size: 1.2em;">Group 18: Theodore Forcier, Rahul Jadgish, Michael Dias, Kashawn Brown</p>
+      <a style="font-size: 1.2em;" href="https://github.com/uwohci23/group-18">GitHub</a>
     </div>
   </section>
 
@@ -71,11 +71,14 @@
     <div class="hidden">
       <h2>Navigational Map</h2>
       <div class="content">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
-        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse 
-        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat 
+        <p>Below you will find or storyboard illustrating the full scope of our System:</p>
+
+        <div class="image-container">
+          <img src="Images/4474Navigation2.jpg" alt="Image" id="zoom-image">
+          <p style="font-size: x-small; font-weight: lighter;">Hover over image to zoom</p>
+        </div>
+        
+        
       </div>
   </div>
   </section>
@@ -139,4 +142,56 @@
   </section>
   
 </body>
+<style>
+  .image-container {
+  position: relative;
+  width: 80%; /* Set the desired width of the image container */
+  height: 80%; /* Set the desired height of the image container */
+  overflow: hidden; /* Hide the overflow of the image */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin:auto;
+  margin-top: 3em;
+  flex-direction: column;
+  
+}
+
+.image-container img {
+  max-width: 100%; /* Ensure the image fits within the container */
+  max-height: 100%; /* Ensure the image fits within the container */
+  transition: transform 0.3s ease-in-out; /* Add a smooth transition effect when scaling the image */
+}
+
+.image-container:hover img {
+  transform: scale(1.2); /* Scale the image up by 20% on hover */
+}
+
+</style>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+// Add a magnifying glass effect on hover
+$(".image-container").mousemove(function(event) {
+  var containerOffset = $(this).offset();
+  var mouseX = event.pageX - containerOffset.left;
+  var mouseY = event.pageY - containerOffset.top;
+  var imageWidth = $(this).find("img").width();
+  var imageHeight = $(this).find("img").height();
+  var offsetX = mouseX / imageWidth * 100;
+  var offsetY = mouseY / imageHeight * 100;
+  $(this).find("img").css({
+    transformOrigin: offsetX + "% " + offsetY + "%",
+    transform: "scale(2.5)"
+  });
+});
+
+$(".image-container").mouseleave(function() {
+  $(this).find("img").css({
+    transformOrigin: "center center",
+    transform: "scale(1)"
+  });
+});
+
+</script>
 </html>
