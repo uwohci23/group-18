@@ -10,7 +10,7 @@ body {
 .highscores-area {
     background-color: rgba(20, 13, 4, 0.336);
     width: 64vw;
-    height: 56vh;
+    height: 52vh;
     margin: auto;
     margin-top: 3vh;
     border: 3px solid black;
@@ -32,7 +32,7 @@ body {
     outline: none;
     cursor: pointer;
     font-size: 17px;
-    padding: 10px 20px;
+    padding: 1vw 2.2vw;
     background-color: #240591;
     border: none;
     font-weight: bold;
@@ -110,8 +110,8 @@ body {
   background-image: url("../Media/back_button.png");
   background-size: contain;
   background-color: transparent;
-  width: 5em;
-  height: 5em;
+  width: 7vw;
+  height: 7vw;
   margin-top: 10px;
   border: none;
   border-radius: 1em;
@@ -122,22 +122,23 @@ body {
 }
 
 h2 {
-    font-size: 200%;
+    font-size: 5vw;
     width: fit-content;
     margin: auto;
     color: whitesmoke;
 }
 
 table {
-    width: 80%;
+    width: 90%;
     margin: auto;
-    border: 3px solid white;
+    border: 0.2vw solid white;
 }
 
 td {
     margin: 0px;
+    font-size: 1.8vw;
     color: white;
-    border: 1px solid white;
+    border: 0.1vw solid white;
 }
 
 .difficulty-selection{
@@ -155,7 +156,7 @@ td {
   outline: none;
   cursor: pointer;
   font-size: 13px;
-  padding: 10px 20px;
+  padding: 0.8vw 2vw;
   background-color: #240591;
   border: none;
   font-weight: bold;
@@ -172,7 +173,7 @@ td {
 .difficulty-select:before {
   content: "";
   position: absolute;
-  top: 0;
+  top: 0px;
   bottom: 0;
   left: -11px;
   width: 24px;
@@ -204,4 +205,9 @@ td {
 
 .difficulty-select:hover:before {
   background-color: #6409a1;
+}
+
+html, body {
+  overflow-x: hidden; /* Hide horizontal scrollbar */
+  overflow-y: hidden; /* Hide vertical scrollbar */
 }

@@ -45,8 +45,13 @@ function loadHtml(id, filename) {
     xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
       if (this.readyState == 4) {
-        if (this.status == 200) {element.innerHTML = this.responseText;}
-        if (this.status == 404) {element.innerHTML = "<h1>PAGE NOT FOUND</h1>";}
+        if (this.status == 200) {
+          element.innerHTML = this.responseText;
+          initEventListeners(filename); // Call the initEventListeners function after loading the content
+        }
+        if (this.status == 404) {
+          element.innerHTML = "<h1>PAGE NOT FOUND</h1>";
+        }
       }
     }
     xhttp.open("GET", `Principles/${file}`, true);
@@ -54,3 +59,73 @@ function loadHtml(id, filename) {
     return;
   }
 }
+
+function initEventListeners(filename) {
+  if(filename == "principle1.html")
+    document.getElementById("first-iframe-overlay").addEventListener("click", showPopup);
+}
+
+function showPopup(event) {
+
+  const popupMessage = document.getElementById("popup-message");
+
+
+  // Show the pop-up message
+  popupMessage.style.display = "block";
+
+  // Hide the pop-up message after 3 seconds
+  setTimeout(() => {
+    popupMessage.style.display = "none";
+  }, 2500);
+}
+
+// Listen for the "openLeaderboards" message
+window.addEventListener('message', function(event) {
+  if (event.data === 'openLeaderboards') {
+    highlightButton("principle2.html"); // Highlight the "Leaderboard" button
+  }
+});
+
+// Listen for the "openLeaderboards" message
+window.addEventListener('message', function(event) {
+  if (event.data === 'openGameMenus') {
+    highlightButton("principle3.html"); // Highlight the "Game Menus" button
+  }
+});
+
+// Listen for the "openGame" message
+window.addEventListener('message', function(event) {
+  if (event.data === 'openGame') {
+    highlightButton("principle5.html"); // Highlight the "Game Menus" button
+  }
+});
+
+function highlightButton(filename) {
+  const buttons = document.querySelectorAll('.btn-group button');
+  let targetButton;
+  buttons.forEach(button => {
+    if (button.getAttribute('onclick').includes(filename)) {
+      targetButton = button;
+    }
+  });
+
+  let flashCount = 0;
+  const maxFlashes = 6; // Number of times the button will flash (even number to revert to the original color)
+  const intervalDuration = 175; // Duration between each flash in milliseconds
+
+  const interval = setInterval(() => {
+    targetButton.classList.toggle('flashing');
+    flashCount++;
+
+    if (flashCount >= maxFlashes) {
+      clearInterval(interval);
+    }
+  }, intervalDuration);
+}
+
+// Parent window code
+window.addEventListener('message', e => {
+  if (e.data.type === 'speechFinished') {
+    console.log('Speech finished in iframe');
+  }
+});

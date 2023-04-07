@@ -154,7 +154,7 @@ section {
   font-size: 20px;
 }
 
-.design-principle .principle-images {
+.design-principle .principle-iframes {
   flex-basis: calc(50% - 40px); /* Adjusted to account for padding */
   display: flex;
   flex-wrap: wrap;
@@ -162,14 +162,75 @@ section {
   align-items: center;
   align-content: space-between;
 	text-align: center;
+  min-height: fit-content;
 }
 
-.design-principle .principle-images img {
+.design-principle .principle-iframes img {
   max-width: 100%;
   height: auto;
   margin-bottom: 20px;
 }
 
-.design-principle .principle-images img:last-child {
+.design-principle .principle-iframes img:last-child {
   margin-bottom: 0px;
+}
+
+.iframe-container {
+  position: relative;
+  width: 100%; /* Change this to your desired width */
+  height: 45%; /* Change this to your desired height */
+  overflow: hidden;
+}
+
+.iframe-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  overflow: hidden;
+}
+
+.first-iframe-container{
+  pointer-events: none;
+}
+
+#leaderboard-iframe iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.iframe-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0); /* Transparent background */
+  cursor: pointer; /* Optional: Change the cursor to pointer when hovering over the iframe */
+  z-index: 2;
+}
+
+.iframe-container#leaderboard-iframe{
+  height: 400px
+}
+
+.popup-message {
+  position: relative;
+  left: 3%;
+  top: 8%;
+  background-color: #ffffff;
+  color: #000000;
+  padding: 10px;
+  border-radius: 5px;
+  z-index: 10;
+}
+
+.btn-group button.active {
+  /* Add your desired styles for the active state */
+  background-color: #ccc;
+}
+
+.btn-group button.flashing {
+  /* Add your desired styles for the active state */
+  background-color: #cac528;
 }
