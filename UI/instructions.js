@@ -17,7 +17,12 @@ closeButton.addEventListener('click', () => {
 // Speech event
 speechButton.addEventListener('click', e => {
   e.preventDefault();
+  console.log("test");
   const utterance = new SpeechSynthesisUtterance(gameDescription.textContent);
+  utterance.onend = () => {
+    // Send a message to the parent window when the speech finishes
+    window.parent.postMessage({ type: 'speechFinished' }, '*');
+  };
   speechSynthesis.speak(utterance);
 });
 
@@ -31,4 +36,6 @@ export function closeInstructionsModal() {
   instructionsModal.classList.remove('active');
   overlay.classList.remove('active');
 }
+
+
 

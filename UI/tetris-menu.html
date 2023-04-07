@@ -223,6 +223,18 @@
         }
       });
 
+      function preventNavigation(event) {
+        if (window.self !== window.top) { // Check if the current window is inside an iframe
+          event.preventDefault(); // Prevent the link from navigating
+        }
+      }
+
+      // Add a click event listener to the "" link
+      document.querySelector('.play-button ').addEventListener('click', function(event) {
+        console.log("shii")
+        preventNavigation(event); // Prevent the link from navigating
+        window.parent.postMessage('openGame', '*'); // Send a message to the parent window
+      });
 
     </script>
 

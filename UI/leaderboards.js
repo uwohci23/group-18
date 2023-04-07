@@ -75,3 +75,15 @@ window.addEventListener("load", () => {
   updateLeaderboard("Snake", "Easy");
 });
 
+function preventNavigation(event) {
+  if (window.self !== window.top) { // Check if the current window is inside an iframe
+    event.preventDefault(); // Prevent the link from navigating
+  }
+}
+
+// Add a click event listener to the "Game Menus" link
+document.querySelector('.back-button').addEventListener('click', function(event) {
+  console.log("test")
+  preventNavigation(event); // Prevent the link from navigating
+});
+

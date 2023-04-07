@@ -4,7 +4,7 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    min-height: 80vh;
+    min-height: 100vh;
 }
 
 .game {
@@ -78,3 +78,8 @@ p:hover {
 a {
     text-decoration: none;
 }
+
+html, body {
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+    overflow-y: hidden; /* Hide vertical scrollbar */
+  }

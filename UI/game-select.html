@@ -7,17 +7,17 @@
   </head>
   <body>
     <div class="games">
-        <a href="snake-menu.html">
+        <a href="snake-menu.html" class="game-menu-link">
             <div id="snake" class="game"></div>
         </a>
-        <a href="minesweeper-menu.html">
+        <a href="minesweeper-menu.html" class="game-menu-link">
             <div id="minesweeper" class="game"></div>
         </a>
-        <a href="tetris-menu.html">
+        <a href="tetris-menu.html" class="game-menu-link">
             <div id="tetris" class="game"></div>
         </a>
     </div>
-    <a href="leaderboards.html">
+    <a href="leaderboards.html" id="leaderboards-link">
       <p>Leaderboards🏆</p>
     </a>
   </body>
@@ -27,5 +27,26 @@
   <script>
     var bgMusic = document.querySelector("#background-music");
     bgMusic.volume = 0.15; // Set volume to 50%
+
+    function preventNavigation(event) {
+      if (window.self !== window.top) { // Check if the current window is inside an iframe
+        event.preventDefault(); // Prevent the link from navigating
+      }
+    }
+
+    // Add a click event listener to the "Leaderboards" link
+    document.getElementById('leaderboards-link').addEventListener('click', function(event) {
+      preventNavigation(event); // Prevent the link from navigating
+      window.parent.postMessage('openLeaderboards', '*'); // Send a message to the parent window
+    });
+
+    // Add a click event listener to the "Game Menus" link
+    document.querySelectorAll('.game-menu-link').forEach(element => {
+      element.addEventListener('click', function(event) {
+        preventNavigation(event); // Prevent the link from navigating
+        window.parent.postMessage('openGameMenus', '*'); // Send a message to the parent window
+      });
+    });
+    
   </script>
 </html>

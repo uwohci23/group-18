@@ -1,6 +1,7 @@
 body {
   font-size: 3.5rem;
   font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
 }
 
 .minesweeper-body{
@@ -32,6 +33,7 @@ text-shadow: 1px 5px 5px #311d35;
 }
 
 .title {
+  font-size: 5vw;
   position: relative;
   right: 0.6em;
   color: white;
@@ -42,8 +44,8 @@ text-shadow: 1px 5px 5px #311d35;
   background-image: url("../Media/back_button.png");
   background-size: cover;
   background-color: transparent;
-  width: 5em;
-  height: 5em;
+  width: 7vw;
+  height: 7vw;
   float: left;
   border: none;
   border-radius: 1em;
@@ -57,8 +59,8 @@ text-shadow: 1px 5px 5px #311d35;
 background-image: url("../Media/settings_button.png");
 background-size: cover;
 background-color: transparent;
-width: 5em;
-height: 5em;
+width: 7vw;
+height: 7vw;
 float: left;
 border: none;
 border-radius: 1em;
@@ -75,8 +77,8 @@ background-color: #411dc44b
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 300px;
-  margin: 16vh auto;
+  width: 35vw;
+  margin: 8vh auto;
 }
     
 label {
@@ -86,8 +88,8 @@ label {
   text-align: center;
   color: white;
   background-color: #333;
-  width: 90px;
-  height: 60px;
+  width: 14vh;
+  height: 8.5vh;
   border-radius: 10px;
   cursor: pointer;
   box-shadow: 1px 5px 15px 5px #000000
@@ -111,7 +113,7 @@ display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: center;
-font-size: 20px;
+font-size: 2vw;
 font-weight: bold;
 height: 100%;
 width: 100%;
@@ -124,13 +126,13 @@ width: 100%;
 }
 
 .play-button {
-background-color: rgb(255, 136, 0);
+  background-color: rgb(255, 136, 0);
   width: 100%;
-  height: 100%;
+  height: 15vh;
   margin: 0px 0px;
-  font-size: larger;
+  font-size: 5vw;
   border: 3px solid orange;
-  border-radius: 2em;
+  border-radius: 5vw;
 }
 
 .play-button:hover{
@@ -141,10 +143,10 @@ background-color: rgb(255, 136, 0);
 display: block;
 text-align: center;
 background-color: rgb(255, 136, 0);
-width: 6em;
-height: 1.6em;
+width: 26vw;
+height: 11vh;
 margin: 4vh auto;
-font-size: 0.9em;
+font-size: 2.9vw;
 border: 3px solid orange;
 border-radius: 2em;
 }
@@ -160,6 +162,7 @@ top: 50%;
 left: 50%;
 transform: translate(-50%, -50%);
 width: 60%;
+height: 80vh;
 max-width: 600px;
 background-color: white;
 border-radius: 12px;
@@ -172,8 +175,7 @@ display: grid;
 }
 
 .instructions-text {
-  font-size: 25px;
-  font-size: 20px;
+  font-size: 3vh;
   text-align: center;
   display: grid;
 }
@@ -191,7 +193,7 @@ background-color: #f1c40f;
 
 .game-controls {
   display: flex;
-  font-size: 15px;
+  font-size: 2.5vh;
   justify-content: center;
   align-items: center;
 }
@@ -309,4 +311,9 @@ font-size: 16px; /* Set font size */
 padding: 8px 10px; /* Add padding */
 width: 100%; /* Set width */
 box-sizing: border-box; /* Include border in width */
+}
+
+html, body {
+  overflow-x: hidden; /* Hide horizontal scrollbar */
+  overflow-y: hidden; /* Hide vertical scrollbar */
 }
