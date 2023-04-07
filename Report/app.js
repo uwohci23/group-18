@@ -97,6 +97,9 @@ function handleSelect(selectedValue) {
     case "heuristic9":
       loadHtml("heuristic-content", "Heuristics/heuristic9.html");
       break;
+    case "heuristic10":
+      loadHtml("heuristic-content", "Heuristics/heuristic10.html");
+      break;
   }
 }
 
