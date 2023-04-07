@@ -217,12 +217,3 @@ section {
 .heuristic-content {
   padding: 30px;
 }
-
-.heuristic-content .heuristic-text {
-  width: 100%;
-  height: 150px;
-  border: none;
-  font-size: 16px;
-  resize: none;
-  align-self: stretch;
-}
