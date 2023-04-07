@@ -171,11 +171,32 @@ section {
 
 .design-principle .principle-iframes img {
   max-width: 100%;
-  height: auto;
+  height: 100%;
   margin-bottom: 20px;
 }
 
 .design-principle .principle-iframes img:last-child {
+  margin-bottom: 0px;
+}
+
+.design-principle .principle-image {
+  flex-basis: calc(50% - 40px); /* Adjusted to account for padding */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: space-between;
+	text-align: center;
+  min-height: fit-content;
+}
+
+.design-principle .principle-image img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.design-principle .principle-image img:last-child {
   margin-bottom: 0px;
 }
 
@@ -237,7 +258,7 @@ section {
 .btn-group button.flashing {
   /* Add your desired styles for the active state */
   background-color: #cac528;
-
+}
 .heuristic-container {
   width: 75%;
   display: flex;

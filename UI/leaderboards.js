@@ -83,7 +83,6 @@ function preventNavigation(event) {
 
 // Add a click event listener to the "Game Menus" link
 document.querySelector('.back-button').addEventListener('click', function(event) {
-  console.log("test")
   preventNavigation(event); // Prevent the link from navigating
 });
 

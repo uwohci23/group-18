@@ -236,6 +236,11 @@
         window.parent.postMessage('openGame', '*'); // Send a message to the parent window
       });
 
+      // Add a click event listener to the "Game Menus" link
+      document.querySelector('.back-button').addEventListener('click', function(event) {  
+        preventNavigation(event); // Prevent the link from navigating
+      });
+
     </script>
 
 
