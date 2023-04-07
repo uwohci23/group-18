@@ -28,7 +28,7 @@ body {
 }
 
 #tetris {
-    background-image: url("../Media/tetris_game_preview.png");
+    background-image: url("../Media/tetris_game_preview.PNG");
     background-size: cover;
     background-position: center;
 }
