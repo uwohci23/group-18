@@ -1008,7 +1008,7 @@ function getRandomInt2(min, max) {
 
     if(name.trim() == "")
     {
-        alert("Please use the text area to enter a name to go with your score!");
+      alert("You cannot submit a score with no name. \nPlease use the text area below to enter a name to go with your score!");
         return;
     }
 

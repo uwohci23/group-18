@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="style.css">
   <script defer src="app.js"></script>
 </head>
-<body onload='loadHtml("design-principle", "principle1.html")'>
+<body onload='initialLoad()'>
 
   <nav>
     <div class="nav-container">
@@ -24,9 +24,9 @@
 
   <section id="intro">
     <div class="hidden">
-      <h1>4474 Redesign - Arcade System</h1>
-      <p>Group 18: Theodore Forcier, Rahul Jadgish, Michael Dias, Kashawn Brown</p>
-      <a href="https://github.com/uwohci23/group-18">GitHub</a>
+      <h1 style="font-size: 3em;">4474 Redesign - Arcade System</h1>
+      <p style="font-size: 1.2em;">Group 18: Theodore Forcier, Rahul Jadgish, Michael Dias, Kashawn Brown</p>
+      <a style="font-size: 1.2em;" href="https://github.com/uwohci23/group-18">GitHub</a>
     </div>
   </section>
 
@@ -71,11 +71,14 @@
     <div class="hidden">
       <h2>Navigational Map</h2>
       <div class="content">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
-        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse 
-        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat 
+        <p>Below you will find or storyboard illustrating the full scope of our System:</p>
+
+        <div class="image-container">
+          <img src="Images/4474Navigation2.jpg" alt="Image" id="zoom-image">
+          <p style="font-size: x-small; font-weight: lighter;">Hover over image to zoom</p>
+        </div>
+        
+        
       </div>
   </div>
   </section>
@@ -86,12 +89,12 @@
       <div class="content">
         <div class="design-principle-grid">
           <div class="btn-group">
-            <button onclick='loadHtml("design-principle", "principle1.html")' id="first-button">Landing / Main UI</button>
-            <button onclick='loadHtml("design-principle", "principle2.html")'>Leaderboard</button>
-            <button onclick='loadHtml("design-principle", "principle3.html")'>Game Menus</button>
-            <button onclick='loadHtml("design-principle", "principle4.html")'>Snake / Minesweeper</button>
-            <button onclick='loadHtml("design-principle", "principle5.html")'>Tetris</button>
-            <button onclick='loadHtml("design-principle", "principle6.html")'>Modals</button>
+            <button class="principle-button active" onclick='loadHtml("design-principle", "Principles/principle1.html" id="first-button")'>Landing / Main UI</button>
+            <button class="principle-button" onclick='loadHtml("design-principle", "Principles/principle2.html")'>Leaderboard</button>
+            <button class="principle-button" onclick='loadHtml("design-principle", "Principles/principle3.html")'>Game Menus</button>
+            <button class="principle-button" onclick='loadHtml("design-principle", "Principles/principle4.html")'>Snake / Minesweeper</button>
+            <button class="principle-button" onclick='loadHtml("design-principle", "Principles/principle5.html")'>Tetris</button>
+            <button class="principle-button" onclick='loadHtml("design-principle", "Principles/principle6.html")'>Modals</button>
           </div>
           <div id="design-principle" class="design-principle"></div>
       </div>
@@ -103,66 +106,23 @@
     <div class="hidden" id="evaluation">
       <h2>Heuristic Evaluation</h2>
       <div class="content">
-        <em>Visibility of System Status</em>
-        <li>Navigation through menus is intuitive</li>
-        <li>All buttons respond to hovering by changing color or an animation</li>
-        <li>State of user choices is clear-</li>
-        <ul>Leaderboards highlight the button of the currently selected game and difficulty</ul>
-        <ul>Game menus highlight the button indicating which difficulty the game will start with</ul> 
-        <ul>Tetris customization display response message to tell the user that the block colors were updated</ul></p>
-        <p>
-        </p><em>Match Between the System and the Real World</em>
-        <li>Back Button</li>
-        Being on the left side of the screen is similar to how you would turn a book back a page and is conventional
-        <li>Game Controls</li>
-        Movement direction corresponds with the physical layout of the keys 
-        Uses standard keys for computer games
-        Minesweeper controls follow that of the original microsoft game </p>
-        <p><em>Consistency and Standards</em>
-        <li>Internal consistency</li>
-        Layout and styling of game menus, pause menu, end of game menu are consistent across all pages
-        <li>External consistency </li>
-        Back buttons, game controls, 
-        User control and Freedom
-        The user can easily back out of accidental actions
-        Navigate to menu from anywhere with back buttons and pause page</p>
-        <p><em>Error Prevention</em>
-        <li>User mistakes</li>
-        To avoid confusion our system only displays information and buttons relevant to the current page
-        When the user gets a new record score, they must submit a name so that their score is saved
-        <li>Use confirm choice pop-up to reduce user slips</li></p>
-        <p><em>Recognition vs Recall in UI</em>
-        <li>The main difference between recognition and recall is the number of cues being displayed. Recall has fewer cues than recognition and that is why it is more difficult and error prone.
-        </li>
-        <li>To mitigate the problem of recall we updated the graphics for each of the games while maintaining the recognizability to its legacy counterparts so that users can immediately identify to the system they are interacting with.  
-        </li></p>
-        <p><em>Flexibility and efficiency of Use</em>
-        <li>Flexible processes allow users to pick their preferred means of interaction which in turn improves the overall efficiency in the system</li>
-        <li>With this in mind certain updates were made within the game mechanisms</li>
-        <ul>Snake is conventionally played with the arrow keys across different devices but keeping in mind our system is developed for desktop/laptop users we also provide them the flexibility to control movement with ‘WASD’ keys.
-        </ul>
-        <ul>Similarly Tetris also provides its users the option or flexibility to play the entire game with traditional arrow keys or ‘WASD’ which ever the user may prefer.  
-        </ul>
-        </p>
-        <p><em>Aesthetic and Minimalist design</em>
-          <li>The key component for a good minimalist design is a high signal-to-noise ratio.</li>
-          <li>Every added element on screen competes for the user’s attention and memory</li>
-          <li>Thus to incorporate an aesthetic and minimalist design we ensure that elements displayed on screen are:</li>
-            <ul>Limited and focused on the current page 
-            <ul>Displayed in an unclustered manner
-            <ul>Adds functionality that is only needed by the user in that instance.
-        </p>
-        <p><em>Help and Documentation</em>
-          <li>As designers we have strived to make the UI as intuitive as possible. However in spite of that it is possible at times users may need assistance while using the system.
-          </li>
-          <li>To accommodate for that we built into the system a landing page for each game so that users can familiarize themselves with the controls and difficulty settings before starting the games.
-          </li>
-          <li>Every game landing page has:</li>
-          <ul>Instructions - That are specific to the game and come with audio and visual aids to improve accessibility for all potential users
-          </ul>
-          <ul>Difficulty - So that users can personally alter the game mechanics to their own preference by selecting a difficulty level</ul>
-        </p>
-        
+        <div class="heuristic-container">
+          <div class="heuristic-menu">
+            <select onchange="handleSelect(this.value)">
+              <option value="heuristic1">Visibility of System Status</option>
+              <option value="heuristic2">Match Between the System and the Real World</option>
+              <option value="heuristic3">Consistency and Standards</option>
+              <option value="heuristic4">Error Prevention</option>
+              <option value="heuristic5">Recognition vs Recall in UI</option>
+              <option value="heuristic6">Flexibility and Efficiency of Use</option>
+              <option value="heuristic7">Aesthetic and Minimalist Design</option>
+              <option value="heuristic8">Help and Documentation</option>
+              <option value="heuristic9">User Control and Freedom</option>
+              <option value="heuristic10">Help Users Recognize, Diagnose, and Recover from Errors</option>
+            </select>
+          </div>
+          <div class="heuristic-content" id="heuristic-content"></div>
+        </div>
       </div>
     </div>
   </section>
@@ -182,4 +142,56 @@
   </section>
   
 </body>
+<style>
+  .image-container {
+  position: relative;
+  width: 80%; /* Set the desired width of the image container */
+  height: 80%; /* Set the desired height of the image container */
+  overflow: hidden; /* Hide the overflow of the image */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin:auto;
+  margin-top: 3em;
+  flex-direction: column;
+  
+}
+
+.image-container img {
+  max-width: 100%; /* Ensure the image fits within the container */
+  max-height: 100%; /* Ensure the image fits within the container */
+  transition: transform 0.3s ease-in-out; /* Add a smooth transition effect when scaling the image */
+}
+
+.image-container:hover img {
+  transform: scale(1.2); /* Scale the image up by 20% on hover */
+}
+
+</style>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+// Add a magnifying glass effect on hover
+$(".image-container").mousemove(function(event) {
+  var containerOffset = $(this).offset();
+  var mouseX = event.pageX - containerOffset.left;
+  var mouseY = event.pageY - containerOffset.top;
+  var imageWidth = $(this).find("img").width();
+  var imageHeight = $(this).find("img").height();
+  var offsetX = mouseX / imageWidth * 100;
+  var offsetY = mouseY / imageHeight * 100;
+  $(this).find("img").css({
+    transformOrigin: offsetX + "% " + offsetY + "%",
+    transform: "scale(2.5)"
+  });
+});
+
+$(".image-container").mouseleave(function() {
+  $(this).find("img").css({
+    transformOrigin: "center center",
+    transform: "scale(1)"
+  });
+});
+
+</script>
 </html>

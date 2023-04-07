@@ -68,7 +68,7 @@ section {
   transform: translateX(-100%);
   transition: all 1s;
   margin-top: 30px;
-  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 .show {
@@ -107,6 +107,10 @@ section {
 }
 
 .btn-group button:hover {
+  background-color: #666;
+}
+
+.btn-group button.active {
   background-color: #6666;
 }
 
@@ -233,4 +237,43 @@ section {
 .btn-group button.flashing {
   /* Add your desired styles for the active state */
   background-color: #cac528;
+
+.heuristic-container {
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  border: 3px solid #666;
+  border-radius: 25px;
+  margin: auto;
+}
+
+.heuristic-menu {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+}
+
+.heuristic-menu select {
+  padding: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  font-style: italic;
+  border: none;
+  background: none;
+  align-self: flex-start;
+  width: 80%;
+  text-align: center;
+  color: white;
+  border: 1px solid #666;
+  border-radius: 10px;
+}
+
+.heuristic-menu select:hover {
+  background-color: #6666;
+}
+
+.heuristic-content {
+  padding: 30px;
 }
